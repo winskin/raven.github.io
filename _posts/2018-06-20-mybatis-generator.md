@@ -413,12 +413,12 @@ src
 
 4. 运行
 
-```java
-public class MainGenerator {
+    ```java
+    public class MainGenerator {
 
-    @Test
-    public void generator() {
-        new MybatisGeneratorMain("generator.yml");
+        @Test
+        public void generator() {
+            new MybatisGeneratorMain("generator.yml");
+        }
     }
-}
-```
+    ```
