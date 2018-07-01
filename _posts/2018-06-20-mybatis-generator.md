@@ -16,6 +16,7 @@ tags:
 3. 使用JUnit启动运行, 能有效隔离项目, 区分业务和工具, 降低对项目的影响。
 
 #### 需要引入的jar包和版本说明
+
 | jar包                           | 版本    | 作用                                                         | 是否必要                         |
 | ------------------------------- | ------- | ------------------------------------------------------------ | -------------------------------- |
 | lombok                          | 1.16.20 | 自动生成getter/setter方法, 加强源码阅读性                    | 可选                             |
@@ -31,7 +32,7 @@ tags:
 1. entity.java
 2. mapper.java
 3. mapper.xml
-结构:
+
 ```
 生成文件目录
 src
@@ -56,36 +57,36 @@ src
 #### 创建配置文件`generator.yml`
 
 ```
-# 需要生成的表名
+#需要生成的表名
 tableNames :
     - user_table
 
-# ------------------------- 数据库连接 ----------------------------------
+#------------------------- 数据库连接 ----------------------------------
 
 url : jdbc:mysql://host:port/dbname
 user : username
 password : password
 
-# ------------------------- 个人路径(改这里就可以) ----------------------------------
+#------------------------- 个人路径(改这里就可以) ----------------------------------
 
-# 项目所在的地址路径(默认根据target/自动获取所在根目录, 目录下mybatis-generator文件夹, 也可自定义设置绝对路径)
+#项目所在的地址路径(默认根据target/自动获取所在根目录, 目录下mybatis-generator文件夹, 也可自定义设置绝对路径)
 #projectPath : D:\Project\
-# jar包的绝对路径(默认根据driverClass包名自动获取, 也可自定义设置绝对路径)
+#jar包的绝对路径(默认根据driverClass包名自动获取, 也可自定义设置绝对路径)
 #classPath : D:\mysql\mysql-connector-java-5.1.40.jar
 
 # ------------------------- 项目配置 ----------------------------------
 
 driverClass : com.mysql.jdbc.Driver
 
-# 实体包名和位置
+#实体包名和位置
 javaModelGeneratorPackage : com.user.entity
 javaModelGeneratorProject : src\main\java
 
-# mapper包名和位置
+#mapper包名和位置
 javaClientGeneratorPackage : com.user.mapper
 javaClientGeneratorProject : src\main\java
 
-# mapperXml位置
+#mapperXml位置
 sqlMapGeneratorPackage : mapperXml
 sqlMapGeneratorProject : src\main\resources
 
