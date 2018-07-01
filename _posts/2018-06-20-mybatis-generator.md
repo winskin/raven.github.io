@@ -8,14 +8,18 @@ tags:
     - mybaits-generator
     - mybatis
 ---
+# mybaits-generator生成器
 
-#### 说明
+## 说明
+
 使用java类+yml配置+JUnit搭建mybatis生成器项目, 能让其他项目快速接入生成mybatis使用的类和文件。
+
 1. java类用于代替传统的xml配置, 简化配置成本和上手成本。
 2. 配置文件使用YAML语法, 相比xml能大大增强阅读性。
 3. 使用JUnit启动运行, 能有效隔离项目, 区分业务和工具, 降低对项目的影响。
 
-#### 需要引入的jar包和版本说明
+## 需要引入的jar包和版本说明
+
 | jar包                           | 版本    | 作用                                                         | 是否必要                         |
 | ------------------------------- | ------- | ------------------------------------------------------------ | -------------------------------- |
 | lombok                          | 1.16.20 | 自动生成getter/setter方法, 加强源码阅读性                    | 可选                             |
@@ -26,12 +30,18 @@ tags:
 | ⭐mybatis-generator-maven-plugin | 1.3.6   | 生成器maven插件(内包含了生成器核心包)                        | 必要                             |
 | junit                           | 4.12    | 单例测试, 用于启动                                           | 必要                             |
 
-#### 项目结构
-生成文件:
+## 项目结构
+
+### 生成文件
+
 1. entity.java
 2. mapper.java
 3. mapper.xml
-```
+
+### 目录结构
+
+~~~text
+
 生成文件目录
 src
     main
@@ -49,11 +59,14 @@ src
         java
             generator   -------- 存放生成器的启动类(单例测试)
         resource    --------- 存放生成器YMAL配置文件`generator.yml`
-            
-```
 
-#### 创建配置文件`generator.yml`
-```
+~~~
+
+## 配置和类
+
+### 创建配置文件`generator.yml`
+
+~~~yaml
 #需要生成的表名
 tableNames :
     - user_table
@@ -87,13 +100,15 @@ javaClientGeneratorProject : src\main\java
 sqlMapGeneratorPackage : mapperXml
 sqlMapGeneratorProject : src\main\resources
 
-```
+~~~
 
-#### java类
+### java类
+
 1. 配置覆盖参数
+
 生成规则默认使用IntrospectedTableMyBatis3Impl, 但是没有isMergeable(覆盖)的可设置方法, 改一下
 注意:1.3.6之前的版本都不能设置覆盖, 只能追加(可能我不会), 1.3.6版本开放了这个参数
-```
+~~~java
 public class MyIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Impl {
 
     @Override
@@ -114,10 +129,11 @@ public class MyIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Im
         return answer;
     }
 }
-```
+~~~
 
-2. 配置信息,主要获取yml配置文件
-```
+1. 配置信息,主要获取yml配置文件
+
+~~~java
 @Data
 @Accessors(chain = true)
 public class MyGeneratorConfig {
@@ -209,10 +225,11 @@ public class MyGeneratorConfig {
         return myGeneratorConfig;
     }
 }
-```
+~~~
 
-3. 构建生成配置
-```
+1. 构建生成配置
+
+~~~java
 public class MybatisGeneratorMain {
 
     private Log logger = LogFactory.getLog(getClass());
@@ -389,10 +406,11 @@ public class MybatisGeneratorMain {
         }
     }
 }
-```
+~~~
 
-4. 运行
-```
+1. 运行
+
+~~~java
 public class MainGenerator {
 
     @Test
@@ -400,4 +418,4 @@ public class MainGenerator {
         new MybatisGeneratorMain("generator.yml");
     }
 }
-```
+~~~

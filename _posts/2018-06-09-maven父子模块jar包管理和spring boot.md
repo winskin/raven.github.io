@@ -10,38 +10,47 @@ tags:
     - spring
 ---
 
-#### 项目结构:
-```
+# maven父子模块jar包管理和spring boot
+
+## 项目结构
+
+~~~text
 parent--父模块空maven项目, 用于管理子模块
     controller
     service
     dao
     model
     client--被其他项目依赖进行微服务内部调用(因下面问题导致client在其他项目中版本冲突和引入大量无用的jar包)
-```
+~~~
 
-#### 存在问题:
+## 存在问题
+
 1. 父模块继承spring boot和引入大量jar包, 当项目1引入项目2中的client模块时导致项目2中父模块中很多无用的jar包也引入到项目1中
 2. 开始计划是父模块放公用的包和管理子模块的版本, 最后每个人的习惯不一样导致不同项目之间的版本冲突
 3. spring boot继承在maven父子模块中很容易版本冲突
 
-#### 解决方法:
+## 解决方法
+
 1. 哪个模块用到什么引入什么, 保持子模块独立
 2. 父模块只放\<properties\>标签管理版本, 不引入任何jar包
 3. 父模块不继承spring boot, 由controller层导入spring boot
 
-#### 由父模块继承spring boot改为子模块导入spring boot
+## 由父模块继承spring boot改为子模块导入spring boot
+
 ❌父模块不要这样使用继承
-```
+
+~~~xml
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.5.13.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
 </parent>
-```
+~~~
+
 ✔建议这样使用
-```
+
+~~~xml
 <!-- 使用dependencyManagement导入版本号 -->
 <dependencyManagement>
     <dependencies>
@@ -88,4 +97,4 @@ parent--父模块空maven项目, 用于管理子模块
         </execution>
     </executions>
 </plugin>
-```
+~~~
