@@ -64,351 +64,354 @@ src
 
 ## 配置和类
 
-### 创建配置文件`generator.yml`
+### 配置文件
 
-```yaml
-#需要生成的表名
-tableNames :
-    - user_table
+1. 新建`generator.yml`
 
-#------------------------- 数据库连接 ----------------------------------
+    ```yaml
+    #需要生成的表名
+    tableNames :
+        - user_table
 
-url : jdbc:mysql://host:port/dbname
-user : username
-password : password
+    #------------------------- 数据库连接 ----------------------------------
 
-#------------------------- 个人路径(改这里就可以) ----------------------------------
+    url : jdbc:mysql://host:port/dbname
+    user : username
+    password : password
 
-#项目所在的地址路径(默认根据target/自动获取所在根目录, 目录下mybatis-generator文件夹, 也可自定义设置绝对路径)
-#projectPath : D:\Project\
-#jar包的绝对路径(默认根据driverClass包名自动获取, 也可自定义设置绝对路径)
-#classPath : D:\mysql\mysql-connector-java-5.1.40.jar
+    #------------------------- 个人路径(改这里就可以) ----------------------------------
 
-# ------------------------- 项目配置 ----------------------------------
+    #项目所在的地址路径(默认根据target/自动获取所在根目录, 目录下mybatis-generator文件夹, 也可自定义设置绝对路径)
+    #projectPath : D:\Project\
+    #jar包的绝对路径(默认根据driverClass包名自动获取, 也可自定义设置绝对路径)
+    #classPath : D:\mysql\mysql-connector-java-5.1.40.jar
 
-driverClass : com.mysql.jdbc.Driver
+    # ------------------------- 项目配置 ----------------------------------
 
-#实体包名和位置
-javaModelGeneratorPackage : com.user.entity
-javaModelGeneratorProject : src\main\java
+    driverClass : com.mysql.jdbc.Driver
 
-#mapper包名和位置
-javaClientGeneratorPackage : com.user.mapper
-javaClientGeneratorProject : src\main\java
+    #实体包名和位置
+    javaModelGeneratorPackage : com.user.entity
+    javaModelGeneratorProject : src\main\java
 
-#mapperXml位置
-sqlMapGeneratorPackage : mapperXml
-sqlMapGeneratorProject : src\main\resources
+    #mapper包名和位置
+    javaClientGeneratorPackage : com.user.mapper
+    javaClientGeneratorProject : src\main\java
 
-```
+    #mapperXml位置
+    sqlMapGeneratorPackage : mapperXml
+    sqlMapGeneratorProject : src\main\resources
+
+    ```
 
 ### java类
 
 1. 配置覆盖参数
 
-生成规则默认使用IntrospectedTableMyBatis3Impl, 但是没有isMergeable(覆盖)的可设置方法, 改一下
-注意:1.3.6之前的版本都不能设置覆盖, 只能追加(可能我不会), 1.3.6版本开放了这个参数
-```java
-public class MyIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Impl {
+    生成规则默认使用IntrospectedTableMyBatis3Impl, 但是没有isMergeable(覆盖)的可设置方法, 改一下
+    注意:1.3.6之前的版本都不能设置覆盖, 只能追加(可能我不会), 1.3.6版本开放了这个参数
 
-    @Override
-    public List<GeneratedXmlFile> getGeneratedXmlFiles() {
-        List<GeneratedXmlFile> answer = new ArrayList<>();
+    ```java
+    public class MyIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Impl {
 
-        if (xmlMapperGenerator != null) {
-            Document document = xmlMapperGenerator.getDocument();
-            GeneratedXmlFile gxf = new GeneratedXmlFile(document,
-                    getMyBatis3XmlMapperFileName(), getMyBatis3XmlMapperPackage(),
-                    context.getSqlMapGeneratorConfiguration().getTargetProject(),
-                    false, context.getXmlFormatter());
-            if (context.getPlugins().sqlMapGenerated(gxf, this)) {
-                answer.add(gxf);
+        @Override
+        public List<GeneratedXmlFile> getGeneratedXmlFiles() {
+            List<GeneratedXmlFile> answer = new ArrayList<>();
+
+            if (xmlMapperGenerator != null) {
+                Document document = xmlMapperGenerator.getDocument();
+                GeneratedXmlFile gxf = new GeneratedXmlFile(document,
+                        getMyBatis3XmlMapperFileName(), getMyBatis3XmlMapperPackage(),
+                        context.getSqlMapGeneratorConfiguration().getTargetProject(),
+                        false, context.getXmlFormatter());
+                if (context.getPlugins().sqlMapGenerated(gxf, this)) {
+                    answer.add(gxf);
+                }
             }
+
+            return answer;
+        }
+    }
+    ```
+
+2. 配置信息,主要获取yml配置文件
+
+    ```java
+    @Data
+    @Accessors(chain = true)
+    public class MyGeneratorConfig {
+
+        private  String[] tableNames;
+        private  String classPath;
+        private  String driverClass;
+        private  String url;
+        private  String user;
+        private  String password;
+        private  String schema;
+        /**
+        * 绝对路径项目根目录
+        */
+        private  String projectPath;
+        private  String javaModelGeneratorPackage;
+        private  String javaModelGeneratorProject;
+        private  String javaClientGeneratorPackage;
+        private  String javaClientGeneratorProject;
+        private  String sqlMapGeneratorPackage;
+        private  String sqlMapGeneratorProject;
+
+        MyGeneratorConfig() {
+
         }
 
-        return answer;
-    }
-}
-```
+        /**
+        * 配置文件"generator.yml"
+        * @param ymlName
+        * @return
+        */
+        public MyGeneratorConfig getConfig(String ymlName) {
 
-1. 配置信息,主要获取yml配置文件
-
-```java
-@Data
-@Accessors(chain = true)
-public class MyGeneratorConfig {
-
-    private  String[] tableNames;
-    private  String classPath;
-    private  String driverClass;
-    private  String url;
-    private  String user;
-    private  String password;
-    private  String schema;
-    /**
-     * 绝对路径项目根目录
-     */
-    private  String projectPath;
-    private  String javaModelGeneratorPackage;
-    private  String javaModelGeneratorProject;
-    private  String javaClientGeneratorPackage;
-    private  String javaClientGeneratorProject;
-    private  String sqlMapGeneratorPackage;
-    private  String sqlMapGeneratorProject;
-
-    MyGeneratorConfig() {
-
-    }
-
-    /**
-     * 配置文件"generator.yml"
-     * @param ymlName
-     * @return
-     */
-    public MyGeneratorConfig getConfig(String ymlName) {
-
-        Map<String, Object> map = new HashMap<>();
-        Yaml yaml = new Yaml();
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream(ymlName);
-        if (is != null) {
-            Object obj = yaml.load(is);
-            if (obj != null) {
-                map = (Map<String, Object>) obj;
+            Map<String, Object> map = new HashMap<>();
+            Yaml yaml = new Yaml();
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream(ymlName);
+            if (is != null) {
+                Object obj = yaml.load(is);
+                if (obj != null) {
+                    map = (Map<String, Object>) obj;
+                }
             }
+
+            MyGeneratorConfig myGeneratorConfig = JSON.parseObject(JSON.toJSONString(map), this.getClass());
+
+            if (StringUtils.isBlank(myGeneratorConfig.getClassPath())) {
+                // 获取驱动包路径
+                try {
+                    String driverClassPath = Class.forName(myGeneratorConfig.getDriverClass())
+                            .getProtectionDomain()
+                            .getCodeSource()
+                            .getLocation()
+                            .getPath()
+                            .replace("/", "\\").substring(1);
+                    myGeneratorConfig.setClassPath(driverClassPath);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (StringUtils.isBlank(myGeneratorConfig.getProjectPath())) {
+                // 默认获取项目路径
+                String[] projectPaths = MyGeneratorConfig.class.getResource("/").getPath().split("/target");
+                projectPath = projectPaths[0].replace("/", "\\").substring(1) + "\\" + "mybatis-generator" + "\\";
+                // 处理中文路劲
+                try {
+                    projectPath = java.net.URLDecoder.decode(projectPath,"utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                myGeneratorConfig.setProjectPath(projectPath);
+            }
+
+            projectPath = myGeneratorConfig.getProjectPath();
+            myGeneratorConfig.setJavaModelGeneratorProject(projectPath + myGeneratorConfig.getJavaModelGeneratorProject());
+            myGeneratorConfig.setJavaClientGeneratorProject(projectPath + myGeneratorConfig.getJavaClientGeneratorProject());
+            myGeneratorConfig.setSqlMapGeneratorProject(projectPath + myGeneratorConfig.getSqlMapGeneratorProject());
+
+            // 创建文件夹
+            new File(myGeneratorConfig.getProjectPath()).mkdirs();
+            new File(myGeneratorConfig.getJavaModelGeneratorProject()).mkdirs();
+            new File(myGeneratorConfig.getJavaClientGeneratorProject()).mkdirs();
+            new File(myGeneratorConfig.getSqlMapGeneratorProject()).mkdirs();
+
+            System.out.println("entity path:" + myGeneratorConfig.getJavaModelGeneratorProject());
+            System.out.println("mapperJava path:" + myGeneratorConfig.getJavaClientGeneratorProject());
+            System.out.println("mapperXml path:" + myGeneratorConfig.getSqlMapGeneratorProject());
+
+            return myGeneratorConfig;
+        }
+    }
+    ```
+
+3. 构建生成配置
+
+    ```java
+    public class MybatisGeneratorMain {
+
+        private Log logger = LogFactory.getLog(getClass());
+
+        private Context context = new Context(ModelType.FLAT);
+        private List<String> warnings = new ArrayList<>();
+        /**
+        * 获取配置
+        */
+        private MyGeneratorConfig myGeneratorConfig = null;
+
+        public MybatisGeneratorMain(String ymlPath) {
+
+            // 设置配置文件
+            this.myGeneratorConfig = new MyGeneratorConfig().getConfig(ymlPath);
+            // 生成
+            generator();
         }
 
-        MyGeneratorConfig myGeneratorConfig = JSON.parseObject(JSON.toJSONString(map), this.getClass());
+        /**
+        * 生成代码主方法
+        */
+        private void generator() {
 
-        if (StringUtils.isBlank(myGeneratorConfig.getClassPath())) {
-            // 获取驱动包路径
+            if (StringUtils.isNotBlank(myGeneratorConfig.getSchema())) {
+                myGeneratorConfig.setUrl(myGeneratorConfig.getUrl() + "/" + myGeneratorConfig.getSchema());
+            }
+
+            context.setId("prod");
+    //        context.setTargetRuntime("MyBatis3");
+            context.setTargetRuntime(MyIntrospectedTableMyBatis3Impl.class.getName());
+
+            // ---------- 配置信息 start ----------
+
+            pluginBuilder(context, "org.mybatis.generator.plugins.ToStringPlugin");
+            pluginBuilder(context, "org.mybatis.generator.plugins.FluentBuilderMethodsPlugin");
+
+            commentGeneratorBuilder(context);
+
+            jdbcConnectionBuilder(context);
+
+            javaTypeResolverBuilder(context);
+
+            javaModelGeneratorBuilder(context);
+
+            sqlMapGeneratorBuilder(context);
+
+            javaClientGeneratorBuilder(context);
+
+            tableBuilder(context, myGeneratorConfig.getSchema(), myGeneratorConfig.getTableNames());
+
+            // ---------- 配置信息 end ----------
+
+
+            // --------- 校验,执行 ---------
+            Configuration config = new Configuration();
+            config.addClasspathEntry(myGeneratorConfig.getClassPath());
+            config.addContext(context);
+            DefaultShellCallback callback = new DefaultShellCallback(true);
+
             try {
-                String driverClassPath = Class.forName(myGeneratorConfig.getDriverClass())
-                        .getProtectionDomain()
-                        .getCodeSource()
-                        .getLocation()
-                        .getPath()
-                        .replace("/", "\\").substring(1);
-                myGeneratorConfig.setClassPath(driverClassPath);
-            } catch (ClassNotFoundException e) {
+                MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+                myBatisGenerator.generate(null);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            logger.warn("warnings=" + warnings);
         }
 
-        if (StringUtils.isBlank(myGeneratorConfig.getProjectPath())) {
-            // 默认获取项目路径
-            String[] projectPaths = MyGeneratorConfig.class.getResource("/").getPath().split("/target");
-            projectPath = projectPaths[0].replace("/", "\\").substring(1) + "\\" + "mybatis-generator" + "\\";
-            // 处理中文路劲
-            try {
-                projectPath = java.net.URLDecoder.decode(projectPath,"utf-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+        /**
+        * plugin
+        * @param context
+        */
+        private void pluginBuilder(Context context, String configurationType) {
+            PluginConfiguration pluginConfiguration = new PluginConfiguration();
+            pluginConfiguration.setConfigurationType(configurationType);
+            context.addPluginConfiguration(pluginConfiguration);
+        }
+
+        /**
+        * commentGenerator
+        * @param context
+        */
+        private void commentGeneratorBuilder(Context context) {
+            CommentGeneratorConfiguration commentGeneratorConfiguration = new CommentGeneratorConfiguration();
+            commentGeneratorConfiguration.addProperty("suppressDate", "true");
+            commentGeneratorConfiguration.addProperty("suppressAllComments", "false");
+            commentGeneratorConfiguration.addProperty("addRemarkComments", "true");
+            commentGeneratorConfiguration.addProperty("javaFileEncoding", "UTF-8");
+            context.setCommentGeneratorConfiguration(commentGeneratorConfiguration);
+        }
+
+        /**
+        * jdbcConnection
+        * @param context
+        */
+        private void jdbcConnectionBuilder(Context context) {
+            JDBCConnectionConfiguration jdbc = new JDBCConnectionConfiguration();
+            jdbc.setConnectionURL(myGeneratorConfig.getUrl());
+            jdbc.setDriverClass(myGeneratorConfig.getDriverClass());
+            jdbc.setUserId(myGeneratorConfig.getUser());
+            jdbc.setPassword(myGeneratorConfig.getPassword());
+            context.setJdbcConnectionConfiguration(jdbc);
+        }
+
+        /**
+        * javaTypeResolver
+        * @param context
+        */
+        private void javaTypeResolverBuilder(Context context) {
+            JavaTypeResolverConfiguration javaTypeResolverConfiguration = new JavaTypeResolverConfiguration();
+            javaTypeResolverConfiguration.addProperty("forceBigDecimals", "true");
+            context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
+        }
+
+        /**
+        * javaModelGenerator
+        * @param context
+        */
+        private void javaModelGeneratorBuilder(Context context) {
+            JavaModelGeneratorConfiguration javaModel = new JavaModelGeneratorConfiguration();
+            javaModel.setTargetPackage(myGeneratorConfig.getJavaModelGeneratorPackage());
+            javaModel.setTargetProject(myGeneratorConfig.getJavaModelGeneratorProject());
+            javaModel.addProperty("trimStrings", "true");
+            javaModel.addProperty("enableSubPackages", "true");
+            context.setJavaModelGeneratorConfiguration(javaModel);
+        }
+
+        /**
+        * sqlMapGenerator
+        * @param context
+        */
+        private void sqlMapGeneratorBuilder(Context context) {
+            SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
+            sqlMapGeneratorConfiguration.setTargetPackage(myGeneratorConfig.getSqlMapGeneratorPackage());
+            sqlMapGeneratorConfiguration.setTargetProject(myGeneratorConfig.getSqlMapGeneratorProject());
+            sqlMapGeneratorConfiguration.addProperty("enableSubPackages", "true");
+            context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
+        }
+
+        /**
+        * javaClientGenerator
+        * @param context
+        */
+        private void javaClientGeneratorBuilder(Context context) {
+            JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
+            javaClientGeneratorConfiguration.setTargetPackage(myGeneratorConfig.getJavaClientGeneratorPackage());
+            javaClientGeneratorConfiguration.setTargetProject(myGeneratorConfig.getJavaClientGeneratorProject());
+            javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
+            javaClientGeneratorConfiguration.addProperty("enableSubPackages", "true");
+            context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
+
+        }
+
+        /**
+        * table
+        * @param context
+        * @param schema        添加SQL表名前面的库名
+        * @param tableName
+        */
+        private void tableBuilder(Context context, String schema, String...tableName) {
+            for (String table : tableName) {
+                TableConfiguration tableConfiguration = new TableConfiguration(context);
+                tableConfiguration.setTableName(table);
+                tableConfiguration.setCountByExampleStatementEnabled(false);
+                tableConfiguration.setUpdateByExampleStatementEnabled(false);
+                tableConfiguration.setDeleteByExampleStatementEnabled(false);
+                tableConfiguration.setSelectByExampleStatementEnabled(false);
+                if (StringUtils.isNotBlank(schema)) {
+                    tableConfiguration.setSchema(schema);
+                    tableConfiguration.addProperty("runtimeSchema", schema);
+                }
+                context.addTableConfiguration(tableConfiguration);
             }
-            myGeneratorConfig.setProjectPath(projectPath);
-        }
-
-        projectPath = myGeneratorConfig.getProjectPath();
-        myGeneratorConfig.setJavaModelGeneratorProject(projectPath + myGeneratorConfig.getJavaModelGeneratorProject());
-        myGeneratorConfig.setJavaClientGeneratorProject(projectPath + myGeneratorConfig.getJavaClientGeneratorProject());
-        myGeneratorConfig.setSqlMapGeneratorProject(projectPath + myGeneratorConfig.getSqlMapGeneratorProject());
-
-        // 创建文件夹
-        new File(myGeneratorConfig.getProjectPath()).mkdirs();
-        new File(myGeneratorConfig.getJavaModelGeneratorProject()).mkdirs();
-        new File(myGeneratorConfig.getJavaClientGeneratorProject()).mkdirs();
-        new File(myGeneratorConfig.getSqlMapGeneratorProject()).mkdirs();
-
-        System.out.println("entity path:" + myGeneratorConfig.getJavaModelGeneratorProject());
-        System.out.println("mapperJava path:" + myGeneratorConfig.getJavaClientGeneratorProject());
-        System.out.println("mapperXml path:" + myGeneratorConfig.getSqlMapGeneratorProject());
-
-        return myGeneratorConfig;
-    }
-}
-```
-
-1. 构建生成配置
-
-```java
-public class MybatisGeneratorMain {
-
-    private Log logger = LogFactory.getLog(getClass());
-
-    private Context context = new Context(ModelType.FLAT);
-    private List<String> warnings = new ArrayList<>();
-    /**
-     * 获取配置
-     */
-    private MyGeneratorConfig myGeneratorConfig = null;
-
-    public MybatisGeneratorMain(String ymlPath) {
-
-        // 设置配置文件
-        this.myGeneratorConfig = new MyGeneratorConfig().getConfig(ymlPath);
-        // 生成
-        generator();
-    }
-
-    /**
-     * 生成代码主方法
-     */
-    private void generator() {
-
-        if (StringUtils.isNotBlank(myGeneratorConfig.getSchema())) {
-            myGeneratorConfig.setUrl(myGeneratorConfig.getUrl() + "/" + myGeneratorConfig.getSchema());
-        }
-
-        context.setId("prod");
-//        context.setTargetRuntime("MyBatis3");
-        context.setTargetRuntime(MyIntrospectedTableMyBatis3Impl.class.getName());
-
-        // ---------- 配置信息 start ----------
-
-        pluginBuilder(context, "org.mybatis.generator.plugins.ToStringPlugin");
-        pluginBuilder(context, "org.mybatis.generator.plugins.FluentBuilderMethodsPlugin");
-
-        commentGeneratorBuilder(context);
-
-        jdbcConnectionBuilder(context);
-
-        javaTypeResolverBuilder(context);
-
-        javaModelGeneratorBuilder(context);
-
-        sqlMapGeneratorBuilder(context);
-
-        javaClientGeneratorBuilder(context);
-
-        tableBuilder(context, myGeneratorConfig.getSchema(), myGeneratorConfig.getTableNames());
-
-        // ---------- 配置信息 end ----------
-
-
-        // --------- 校验,执行 ---------
-        Configuration config = new Configuration();
-        config.addClasspathEntry(myGeneratorConfig.getClassPath());
-        config.addContext(context);
-        DefaultShellCallback callback = new DefaultShellCallback(true);
-
-        try {
-            MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
-            myBatisGenerator.generate(null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        logger.warn("warnings=" + warnings);
-    }
-
-    /**
-     * plugin
-     * @param context
-     */
-    private void pluginBuilder(Context context, String configurationType) {
-        PluginConfiguration pluginConfiguration = new PluginConfiguration();
-        pluginConfiguration.setConfigurationType(configurationType);
-        context.addPluginConfiguration(pluginConfiguration);
-    }
-
-    /**
-     * commentGenerator
-     * @param context
-     */
-    private void commentGeneratorBuilder(Context context) {
-        CommentGeneratorConfiguration commentGeneratorConfiguration = new CommentGeneratorConfiguration();
-        commentGeneratorConfiguration.addProperty("suppressDate", "true");
-        commentGeneratorConfiguration.addProperty("suppressAllComments", "false");
-        commentGeneratorConfiguration.addProperty("addRemarkComments", "true");
-        commentGeneratorConfiguration.addProperty("javaFileEncoding", "UTF-8");
-        context.setCommentGeneratorConfiguration(commentGeneratorConfiguration);
-    }
-
-    /**
-     * jdbcConnection
-     * @param context
-     */
-    private void jdbcConnectionBuilder(Context context) {
-        JDBCConnectionConfiguration jdbc = new JDBCConnectionConfiguration();
-        jdbc.setConnectionURL(myGeneratorConfig.getUrl());
-        jdbc.setDriverClass(myGeneratorConfig.getDriverClass());
-        jdbc.setUserId(myGeneratorConfig.getUser());
-        jdbc.setPassword(myGeneratorConfig.getPassword());
-        context.setJdbcConnectionConfiguration(jdbc);
-    }
-
-    /**
-     * javaTypeResolver
-     * @param context
-     */
-    private void javaTypeResolverBuilder(Context context) {
-        JavaTypeResolverConfiguration javaTypeResolverConfiguration = new JavaTypeResolverConfiguration();
-        javaTypeResolverConfiguration.addProperty("forceBigDecimals", "true");
-        context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
-    }
-
-    /**
-     * javaModelGenerator
-     * @param context
-     */
-    private void javaModelGeneratorBuilder(Context context) {
-        JavaModelGeneratorConfiguration javaModel = new JavaModelGeneratorConfiguration();
-        javaModel.setTargetPackage(myGeneratorConfig.getJavaModelGeneratorPackage());
-        javaModel.setTargetProject(myGeneratorConfig.getJavaModelGeneratorProject());
-        javaModel.addProperty("trimStrings", "true");
-        javaModel.addProperty("enableSubPackages", "true");
-        context.setJavaModelGeneratorConfiguration(javaModel);
-    }
-
-    /**
-     * sqlMapGenerator
-     * @param context
-     */
-    private void sqlMapGeneratorBuilder(Context context) {
-        SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
-        sqlMapGeneratorConfiguration.setTargetPackage(myGeneratorConfig.getSqlMapGeneratorPackage());
-        sqlMapGeneratorConfiguration.setTargetProject(myGeneratorConfig.getSqlMapGeneratorProject());
-        sqlMapGeneratorConfiguration.addProperty("enableSubPackages", "true");
-        context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
-    }
-
-    /**
-     * javaClientGenerator
-     * @param context
-     */
-    private void javaClientGeneratorBuilder(Context context) {
-        JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
-        javaClientGeneratorConfiguration.setTargetPackage(myGeneratorConfig.getJavaClientGeneratorPackage());
-        javaClientGeneratorConfiguration.setTargetProject(myGeneratorConfig.getJavaClientGeneratorProject());
-        javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
-        javaClientGeneratorConfiguration.addProperty("enableSubPackages", "true");
-        context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
-
-    }
-
-    /**
-     * table
-     * @param context
-     * @param schema        添加SQL表名前面的库名
-     * @param tableName
-     */
-    private void tableBuilder(Context context, String schema, String...tableName) {
-        for (String table : tableName) {
-            TableConfiguration tableConfiguration = new TableConfiguration(context);
-            tableConfiguration.setTableName(table);
-            tableConfiguration.setCountByExampleStatementEnabled(false);
-            tableConfiguration.setUpdateByExampleStatementEnabled(false);
-            tableConfiguration.setDeleteByExampleStatementEnabled(false);
-            tableConfiguration.setSelectByExampleStatementEnabled(false);
-            if (StringUtils.isNotBlank(schema)) {
-                tableConfiguration.setSchema(schema);
-                tableConfiguration.addProperty("runtimeSchema", schema);
-            }
-            context.addTableConfiguration(tableConfiguration);
         }
     }
-}
-```
+    ```
 
-1. 运行
+4. 运行
 
 ```java
 public class MainGenerator {

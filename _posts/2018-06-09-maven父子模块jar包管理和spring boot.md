@@ -37,64 +37,64 @@ parent--父模块空maven项目, 用于管理子模块
 
 ## 由父模块继承spring boot改为子模块导入spring boot
 
-❌父模块不要这样使用继承
+1. ❌父模块不要这样使用继承
 
-```xml
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.13.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-</parent>
-```
+    ```xml
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.13.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    ```
 
-✔建议这样使用
+2. ✔建议这样使用
 
-```xml
-<!-- 使用dependencyManagement导入版本号 -->
-<dependencyManagement>
-    <dependencies>
-        <!-- 
-            自定义版本覆盖spring boot内的版本;
-            比如验证框架6.0.10.Final覆盖spring boot parent内的5.3.6.Final;
-            项目会优先获取spring boot内版本, 覆盖可以避免版本冲突
-            注意: 覆盖版本一定要在spring-boot-dependencies上面
-        -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.0.10.Final</version>
-        </dependency>
+    ```xml
+    <!-- 使用dependencyManagement导入版本号 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 
+                自定义版本覆盖spring boot内的版本;
+                比如验证框架6.0.10.Final覆盖spring boot parent内的5.3.6.Final;
+                项目会优先获取spring boot内版本, 覆盖可以避免版本冲突
+                注意: 覆盖版本一定要在spring-boot-dependencies上面
+            -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>6.0.10.Final</version>
+            </dependency>
 
-        <!-- 导入spring boot的pom -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>1.5.13.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
+            <!-- 导入spring boot的pom -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.13.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-.....
+    .....
 
-<!-- 使用导入, 一定要使用spring-boot-maven插件, 否则无法使用java -jar 命令 -->
-<plugin>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-maven-plugin</artifactId>
-    <version>1.5.13.RELEASE</version>
-    <configuration>
-        <mainClass>${start-class}</mainClass>
-        <layout>ZIP</layout>
-        <!--<skip>true</skip>-->
-    </configuration>
-    <executions>
-        <execution>
-            <goals>
-                <goal>repackage</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
-```
+    <!-- 使用导入, 一定要使用spring-boot-maven插件, 否则无法使用java -jar 命令 -->
+    <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>1.5.13.RELEASE</version>
+        <configuration>
+            <mainClass>${start-class}</mainClass>
+            <layout>ZIP</layout>
+            <!--<skip>true</skip>-->
+        </configuration>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>repackage</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+    ```
