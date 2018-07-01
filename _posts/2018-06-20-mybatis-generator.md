@@ -40,7 +40,7 @@ tags:
 
 ### 目录结构
 
-~~~text
+```text
 
 生成文件目录
 src
@@ -60,13 +60,13 @@ src
             generator   -------- 存放生成器的启动类(单例测试)
         resource    --------- 存放生成器YMAL配置文件`generator.yml`
 
-~~~
+```
 
 ## 配置和类
 
 ### 创建配置文件`generator.yml`
 
-~~~yaml
+```yaml
 #需要生成的表名
 tableNames :
     - user_table
@@ -100,7 +100,7 @@ javaClientGeneratorProject : src\main\java
 sqlMapGeneratorPackage : mapperXml
 sqlMapGeneratorProject : src\main\resources
 
-~~~
+```
 
 ### java类
 
@@ -108,7 +108,7 @@ sqlMapGeneratorProject : src\main\resources
 
 生成规则默认使用IntrospectedTableMyBatis3Impl, 但是没有isMergeable(覆盖)的可设置方法, 改一下
 注意:1.3.6之前的版本都不能设置覆盖, 只能追加(可能我不会), 1.3.6版本开放了这个参数
-~~~java
+```java
 public class MyIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Impl {
 
     @Override
@@ -129,11 +129,11 @@ public class MyIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Im
         return answer;
     }
 }
-~~~
+```
 
 1. 配置信息,主要获取yml配置文件
 
-~~~java
+```java
 @Data
 @Accessors(chain = true)
 public class MyGeneratorConfig {
@@ -225,11 +225,11 @@ public class MyGeneratorConfig {
         return myGeneratorConfig;
     }
 }
-~~~
+```
 
 1. 构建生成配置
 
-~~~java
+```java
 public class MybatisGeneratorMain {
 
     private Log logger = LogFactory.getLog(getClass());
@@ -406,11 +406,11 @@ public class MybatisGeneratorMain {
         }
     }
 }
-~~~
+```
 
 1. 运行
 
-~~~java
+```java
 public class MainGenerator {
 
     @Test
@@ -418,4 +418,4 @@ public class MainGenerator {
         new MybatisGeneratorMain("generator.yml");
     }
 }
-~~~
+```

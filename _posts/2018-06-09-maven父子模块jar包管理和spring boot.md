@@ -14,14 +14,14 @@ tags:
 
 ## 项目结构
 
-~~~text
+```text
 parent--父模块空maven项目, 用于管理子模块
     controller
     service
     dao
     model
     client--被其他项目依赖进行微服务内部调用(因下面问题导致client在其他项目中版本冲突和引入大量无用的jar包)
-~~~
+```
 
 ## 存在问题
 
@@ -39,18 +39,18 @@ parent--父模块空maven项目, 用于管理子模块
 
 ❌父模块不要这样使用继承
 
-~~~xml
+```xml
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.5.13.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
 </parent>
-~~~
+```
 
 ✔建议这样使用
 
-~~~xml
+```xml
 <!-- 使用dependencyManagement导入版本号 -->
 <dependencyManagement>
     <dependencies>
@@ -97,4 +97,4 @@ parent--父模块空maven项目, 用于管理子模块
         </execution>
     </executions>
 </plugin>
-~~~
+```
