@@ -1,6 +1,6 @@
 ---
 layout: post
-title:spring mvc 返回图片
+title: spring mvc 返回图片
 date: 2018-03-12 11:16:00
 categories:
     - 日常记录
