@@ -8,9 +8,8 @@ tags:
     - spring mvc
     - spring
 ---
-# spring mvc 返回图片
 
-## 说明
+# spring mvc 返回图片
 
 ```java
 @RestController
