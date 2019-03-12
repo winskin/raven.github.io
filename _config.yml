@@ -6,7 +6,7 @@
 # Site
 title: f0.95
 subtitle:
-description: 
+description:
 author: Raven
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: zh-Hans
@@ -386,6 +386,32 @@ disqus:
   # hide comments (visitors need to click to load the comments)
   # count need to be false when hide is true
   hide: false
+
+# <wildfire>
+wildfire:
+  enable: false
+  # version - It's recommended to use the following versions.
+  loaderVersion: 1.2.5 # https://www.npmjs.com/package/wildfire-comment
+  useDev: true
+  version: 0.5.6 
+  # database config
+  databaseProvider: firebase # or wilddog
+  firebase: # your firebase config goes here ↓
+    apiKey: 
+    authDomain:
+    databaseURL:
+    projectId:
+    storageBucket:
+    messagingSenderId:
+  wilddog: # your wilddog config goes here ↓
+    siteId:
+  # other configs
+  theme: light # or dark
+  locale: zh-CN # or other locales, e.g. zh-CN
+  defaultAvatarURL: 
+# Any question? 
+# Raise an issue here: https://github.com/cheng-kang/wildfire/issues
+# </wildfire>
 
 # Hypercomments
 #hypercomments_id:
