@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":"ture"},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="前言因项目的DTO越来越多，且不同层级的DTO和javabean需要转换，大量使用bean.copy方法，造成性能下降，阅读性差的问题，准备引入MapStruct进行javabean数据的映射转换。 MapStruct是什么MapStruct是一个Java注释处理器，用于为Java bean类生成类型安全和高性能的映射器。它使您不必手工编写映射代码，这是一个繁琐且容易出错的任务。该生成器具有合理的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MapStruct的简单使用">
+<meta property="og:url" content="http://yoursite.com/2020/01/19/2020-01-19-MapStruct%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="f0.95">
+<meta property="og:description" content="前言因项目的DTO越来越多，且不同层级的DTO和javabean需要转换，大量使用bean.copy方法，造成性能下降，阅读性差的问题，准备引入MapStruct进行javabean数据的映射转换。 MapStruct是什么MapStruct是一个Java注释处理器，用于为Java bean类生成类型安全和高性能的映射器。它使您不必手工编写映射代码，这是一个繁琐且容易出错的任务。该生成器具有合理的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-19T03:15:44.000Z">
+<meta property="article:modified_time" content="2020-01-19T06:38:17.927Z">
+<meta property="article:author" content="Raven">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/19/2020-01-19-MapStruct%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>MapStruct的简单使用 | f0.95</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?502b6e1566ea20bb7678cc0d64a498cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">f0.95</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/winskin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/2020-01-19-MapStruct%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          MapStruct的简单使用
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-19 11:15:44 / 修改时间：14:38:17" itemprop="dateCreated datePublished" datetime="2020-01-19T11:15:44+08:00">2020-01-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因项目的DTO越来越多，且不同层级的DTO和javabean需要转换，大量使用bean.copy方法，造成性能下降，阅读性差的问题，准备引入MapStruct进行javabean数据的映射转换。</p>
+<h2 id="MapStruct是什么"><a href="#MapStruct是什么" class="headerlink" title="MapStruct是什么"></a>MapStruct是什么</h2><p>MapStruct是一个Java注释处理器，用于为Java bean类生成类型安全和高性能的映射器。它使您不必手工编写映射代码，这是一个繁琐且容易出错的任务。该生成器具有合理的默认值和许多内置的类型转换，但是在配置或实现特殊行为时，它会自动退出。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>通过使用普通方法调用而不是反射来快速执行</li>
+<li>编译时类型安全。只能映射彼此映射的对象和属性，因此不会将实体意外映射到客户DTO等等。</li>
+<li>独立代码-没有运行时依赖</li>
+<li>在构建时清除错误报告，如：<br> a. 映射不完整（并非所有目标属性都被映射）<br> b. 映射不正确（找不到正确的映射方法或类型转换）</li>
+<li>易于调试的映射代码（或可以手动编辑，例如，如果生成器中有错误）</li>
+</ol>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p>这里使用的是MapStruct 1.3.1版本，需要Java 1.8或以上（1.2.x版本好像不支持Java 1.8，需要其他包代替）</p>
+<h2 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a>简单说明</h2><p>需要在两种类型之间创建映射，请声明一个映射器类，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Mapper</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CarMapper</span> </span>&#123;<br>    CarMapper INSTANCE = Mappers.getMapper( CarMapper<span class="hljs-class">.<span class="hljs-keyword">class</span> )</span>;<br>    <span class="hljs-meta">@Mapping</span>(source = <span class="hljs-string">"numberOfSeats"</span>, target = <span class="hljs-string">"seatCount"</span>)<br>    <span class="hljs-function">CarDto <span class="hljs-title">carToCarDto</span><span class="hljs-params">(Car car)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在编译时，MapStruct将生成此接口的实现。生成的实现使用简单的Java方法调用在源对象和目标对象之间进行映射，即不涉及反射。默认情况下，如果属性在源和目标中具有相同的名称，则将映射它们，但是您可以使用@Mapping和少量其他注释来控制此属性和许多其他方面。</p>
+<h2 id="开发工具插件"><a href="#开发工具插件" class="headerlink" title="开发工具插件"></a>开发工具插件</h2><p>IntelliJ idea 中可在插件市场中下载使用插件（<a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/10036-mapstruct-support</a>）<br>    PS：这里用到Lombok，因此也需要下载idea插件市场的一个Lombok插件</p>
+<p>确保您idea版本至少为 2018.2.x（由于对maven-compiler-plugin的注解处理器的支持来自该版本，因此是必需的）。<br>在IntelliJ中启用注释处理（Build, Execution, Deployment -&gt; Compiler -&gt; Annotation Processors）</p>
+<h2 id="Maven环境配置"><a href="#Maven环境配置" class="headerlink" title="Maven环境配置"></a>Maven环境配置</h2><p>对于基于Maven的项目，将以下内容添加到您的POM文件中以使用MapStruct（依赖关系在Maven Central中可用）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs xml">...<br><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">org.mapstruct.version</span>&gt;</span>1.3.1.Final<span class="hljs-tag">&lt;/<span class="hljs-name">org.mapstruct.version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>...<br><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mapstruct<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mapstruct<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br>...<br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">annotationProcessorPaths</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mapstruct<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mapstruct-processor<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><br>                    <br>                    <span class="hljs-comment">&lt;!--添加Lombok的注册处理器--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">annotationProcessorPaths</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br>...<br></code></pre></td></tr></table></figure>
+
+<h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><p>当MapStruct和Lombok混合使用时，会出现异常，找不到字段：<br><code>Warning:java: 来自注释处理程序 &#39;net.java.dev.hickory.prism.internal.PrismGenerator&#39; 的受支持 source 版本 &#39;RELEASE_6&#39; 低于 -source &#39;1.8&#39;</code><br><code>Error:(101, 16) java: No property named &quot;numberOfSeats&quot; exists in source parameter(s). Did you mean &quot;null&quot;?</code></p>
+<p>解决方法只需要在&lt;maven-compiler-plugin&gt;节点的&lt;annotationProcessorPaths&gt;中添加:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--添加Lombok的注册处理器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="下面是代码"><a href="#下面是代码" class="headerlink" title="下面是代码"></a>下面是代码</h2><table>
+<thead>
+<tr>
+<th>需要</th>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>源实体</td>
+<td>Car</td>
+<td>数据来源实体，数据库实体(this) 转换到 DTO</td>
+</tr>
+<tr>
+<td>目标实体</td>
+<td>CarDto</td>
+<td>转换目标实体，DTO 转换到 响应实体(this)</td>
+</tr>
+<tr>
+<td>映射interface</td>
+<td>CarMapper</td>
+<td>定义用于转换映射的interface，MapStruct会实现这个接口</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> raven.spring.study;<br><br><span class="hljs-keyword">import</span> lombok.AllArgsConstructor;<br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> lombok.Getter;<br><span class="hljs-keyword">import</span> lombok.ToString;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><span class="hljs-keyword">import</span> org.mapstruct.Mapper;<br><span class="hljs-keyword">import</span> org.mapstruct.Mapping;<br><span class="hljs-keyword">import</span> org.mapstruct.factory.Mappers;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapStructTests</span> </span>&#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shouldMapCarToDtoTest</span><span class="hljs-params">()</span> </span>&#123;<br><br>        <span class="hljs-comment">// 实例化数据对象</span><br>        Car car = <span class="hljs-keyword">new</span> Car( <span class="hljs-string">"Morris"</span>, <span class="hljs-number">5</span>, CarType.SEDAN ,<span class="hljs-number">200.19</span>);<br><br>        <span class="hljs-comment">// 获得映射实例, 并调用转换方法</span><br>        CarDto carDto = CarMapper.INSTANCE.carToCarDto(car);<br><br>        System.out.println(car);<br>        System.out.println(carDto);<br><br>        System.out.println(<span class="hljs-string">"同类型同名:"</span> + carDto.getMake().equals(<span class="hljs-string">"Morris"</span>));<br>        System.out.println(<span class="hljs-string">"同类型非同名"</span> + (carDto.getSeatCount() == (<span class="hljs-number">5</span>)));<br>        System.out.println(<span class="hljs-string">"字符串-枚举:"</span> + carDto.getType().equals(<span class="hljs-string">"SEDAN"</span>));<br>        System.out.println(<span class="hljs-string">"非同类型非同名:"</span> + carDto.getMaxCarSpeed().equals(String.valueOf(car.getMaxSpeed())));<br><br>        <span class="hljs-comment">/*<br>        打印结果:<br>            Car&#123;make='Morris', numberOfSeats=5, type=CarType&#123;key='SEDAN'&#125;, maxSpeed=200.19&#125;<br>            CarDto&#123;make='Morris', seatCount=5, type='SEDAN', maxCarSpeed='200.19'&#125;<br>            同类型同名:true<br>            同类型非同名true<br>            字符串-枚举:true<br>            非同类型非同名:true<br>        */</span><br>    &#125;<br><br>&#125;<br><br><span class="hljs-comment">// 数据实体-&gt;DTO 两种类型非常相似，只有座位数属性具有不同的名称，并且类型属性在Car类中具有特殊的枚举类型，但在DTO中是纯字符串。</span><br><br><span class="hljs-comment">/**<br>* 数据实体<br>*/</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@ToString</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> String make;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> numberOfSeats;<br>    <span class="hljs-keyword">private</span> CarType type;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> maxSpeed;<br>&#125;<br><br><span class="hljs-comment">/**<br>* 传输DTO<br>*/</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@ToString</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CarDto</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> String make;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> seatCount;<br>    <span class="hljs-keyword">private</span> String type;<br>    <span class="hljs-keyword">private</span> String maxCarSpeed;<br>&#125;<br><br><br><span class="hljs-comment">/**<br>* 枚举<br>*/</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@Getter</span><br><span class="hljs-keyword">enum</span> CarType &#123;<br>    SEDAN(<span class="hljs-string">"SEDAN"</span>);<br>    <span class="hljs-keyword">private</span> String key;<br>&#125;<br><br><span class="hljs-comment">/**<br>* 映射器<br>* 从Car对象中创建CarDto对象，需要定义一个映射器接口<br>*/</span><br><span class="hljs-comment">// @Mapper将接口标记为映射接口，并让MapStruct处理器在编译期间启动。</span><br><span class="hljs-comment">// 对于源对象和目标对象中名称不同的属性，@Mapping可用于配置名称。</span><br><span class="hljs-comment">// 当然，一个接口中可以有多种映射方法，MapStruct将为所有接口生成一个实现。</span><br><span class="hljs-meta">@Mapper</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CarMapper</span> </span>&#123;<br><br>    <span class="hljs-comment">// 可以从Mappers类检索接口实现的实例。按照约定，该接口声明一个成员INSTANCE，为客户端提供对映射器实现的访问。</span><br>    CarMapper INSTANCE = Mappers.getMapper( CarMapper<span class="hljs-class">.<span class="hljs-keyword">class</span> )</span>;<br><br>    <span class="hljs-comment">// 实际的映射方法将源对象作为参数并返回目标对象。其名称可以自由选择。</span><br>    <span class="hljs-comment">// 在必要和可能的情况下，将对源和目标中具有不同类型的属性执行类型转换，例如type属性将从枚举类型转换为字符串。</span><br>    <span class="hljs-meta">@Mapping</span>(source = <span class="hljs-string">"numberOfSeats"</span>, target = <span class="hljs-string">"seatCount"</span>)<br>    <span class="hljs-meta">@Mapping</span>(source = <span class="hljs-string">"maxSpeed"</span>, target = <span class="hljs-string">"maxCarSpeed"</span>)<br>    <span class="hljs-function">CarDto <span class="hljs-title">carToCarDto</span><span class="hljs-params">(Car car)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用起来还是挺方便的，只需要新建一个映射器即可使用，不同的类型或者字段也能标记映射，阅读性更高，维护性也高。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/18/2020-01-18-Hexo%E5%92%8CGithubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="Hexo和GithubPages搭建博客">
+      <i class="fa fa-chevron-left"></i> Hexo和GithubPages搭建博客
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/20/2020-01-20-%E5%AF%BB%E6%89%BE%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%B3%95/" rel="next" title="寻找适合自己的记账法">
+      寻找适合自己的记账法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapStruct是什么"><span class="nav-number">2.</span> <span class="nav-text">MapStruct是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行环境"><span class="nav-number">4.</span> <span class="nav-text">运行环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单说明"><span class="nav-number">5.</span> <span class="nav-text">简单说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发工具插件"><span class="nav-number">6.</span> <span class="nav-text">开发工具插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven环境配置"><span class="nav-number">7.</span> <span class="nav-text">Maven环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碰到的问题"><span class="nav-number">8.</span> <span class="nav-text">碰到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面是代码"><span class="nav-number">9.</span> <span class="nav-text">下面是代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Raven"
+      src="/images/my-avatar.gif">
+  <p class="site-author-name" itemprop="name">Raven</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/winskin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;winskin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Raven</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

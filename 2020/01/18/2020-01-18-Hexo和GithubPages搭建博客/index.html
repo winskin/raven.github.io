@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":"ture"},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="前言Github Pages之前使用jekyll搭建，好处是博客代码和Markdown可以放在同一个github仓库统一管理版本控制，但是换博客主题感觉有点麻烦，就有了jekyll换成Hexo的想法。 Hexo介绍Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 官网文档：https:&#x2F;&#x2F;hexo.i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo和GithubPages搭建博客">
+<meta property="og:url" content="http://yoursite.com/2020/01/18/2020-01-18-Hexo%E5%92%8CGithubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="f0.95">
+<meta property="og:description" content="前言Github Pages之前使用jekyll搭建，好处是博客代码和Markdown可以放在同一个github仓库统一管理版本控制，但是换博客主题感觉有点麻烦，就有了jekyll换成Hexo的想法。 Hexo介绍Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 官网文档：https:&#x2F;&#x2F;hexo.i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-18T02:26:09.000Z">
+<meta property="article:modified_time" content="2020-01-19T06:38:36.499Z">
+<meta property="article:author" content="Raven">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/18/2020-01-18-Hexo%E5%92%8CGithubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Hexo和GithubPages搭建博客 | f0.95</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?502b6e1566ea20bb7678cc0d64a498cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">f0.95</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/winskin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/18/2020-01-18-Hexo%E5%92%8CGithubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Hexo和GithubPages搭建博客
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-18 10:26:09" itemprop="dateCreated datePublished" datetime="2020-01-18T10:26:09+08:00">2020-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:36" itemprop="dateModified" datetime="2020-01-19T14:38:36+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Github Pages之前使用<code>jekyll</code>搭建，好处是博客代码和Markdown可以放在同一个github仓库统一管理版本控制，但是换博客主题感觉有点麻烦，就有了<code>jekyll</code>换成<code>Hexo</code>的想法。</p>
+<h3 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p>官网文档：<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/index.html</a></p>
+<p>与jekyll相比：</p>
+<ul>
+<li>jekyll提交Markdown到Github Pages就可以渲染部署使用；Hexo需要本地生成（编译？）后再推到服务器或者Github Pages才能部署使用。</li>
+<li>jekyll放在Github Pages上的文件是Markdown；Hexo放到Github Pages上的文件是Html。</li>
+<li>Hexo可以本地运行，预览博客效果</li>
+<li>Hexo更换主题很方便；jekyll则Markdown放到主题文件里，更改比较麻烦</li>
+</ul>
+<h3 id="Hexo环境"><a href="#Hexo环境" class="headerlink" title="Hexo环境"></a>Hexo环境</h3><ul>
+<li><a href='https://nodejs.org/' target="_blank" rel="noopener">NodeJs</a>(Node.js 版本需不低于 8.10，建议使用 Node.js 10.0 及以上版本)</li>
+<li><a href='https://git-scm.com/' target="_blank" rel="noopener">Git</a></li>
+</ul>
+<h3 id="Hexo本地环境搭建"><a href="#Hexo本地环境搭建" class="headerlink" title="Hexo本地环境搭建"></a>Hexo本地环境搭建</h3><ol>
+<li>安装Hexo<br> <code>$ npm install -g hexo-cli</code></li>
+<li>初始化<br> <code>$ hexo init &lt;folder&gt;</code><br> <code>$ cd &lt;folder&gt;</code><br> <code>$ npm install</code></li>
+<li>下载博客主题，这里用的是Next<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a></li>
+<li>clone或者下载好后放到<code>theme</code>文件夹<ul>
+<li><folder>根目录下的<code>_config.yml</code>是站点配置（即博客的生成配置），<code>&lt;folder&gt;/theme/&lt;主题文件夹&gt;</code>下的<code>_config.yml</code>是主题配置</li>
+</ul>
+</li>
+<li>修改站点配置<code>_config.yml</code><ul>
+<li>有空格bug，需要删除空格（菜单路径都要删除空格）如: _config.yml 95行<code>home: / || home</code>改为<code>home: /|| home</code></li>
+<li>语言改为中文 language: zh-Hans （Next 6.0后使用 zh-CN）</li>
+</ul>
+</li>
+<li>添加页面<ul>
+<li>添加tags</li>
+<li>命令：<code>$ hexo new page tags</code><br>确认站点配置文件里有tag_dir: tags<br>确认主题配置文件里有tags: /tags<br>编辑站点的<folder>/source/tags/index.md，添加<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2015</span><span class="hljs-number">-10</span><span class="hljs-number">-20</span> <span class="hljs-number">06</span><span class="hljs-string">:49:50</span><br><span class="hljs-attr">type:</span> <span class="hljs-string">"tags"</span><br><span class="hljs-attr">comments:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li>
+<li>添加分类</li>
+<li>命令：<code>$ hexo new page categories</code><br>确认站点配置文件里有category_dir: categories<br>确认主题配置文件里有categories: /categories<br>编辑站点的<folder>source/categories/index.md，添加<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">categories</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2015</span><span class="hljs-number">-10</span><span class="hljs-number">-20</span> <span class="hljs-number">06</span><span class="hljs-string">:49:50</span><br><span class="hljs-attr">type:</span> <span class="hljs-string">"categories"</span><br><span class="hljs-attr">comments:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>添加本地搜索<ul>
+<li>安装插件 hexo-generator-searchdb，在站点的根目录下执行以下命令：<br><code>$ npm install hexo-generator-searchdb --save</code></li>
+<li>编辑站点配置文件，新增以下内容到任意位置：   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">search:</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">search.xml</span><br>    <span class="hljs-attr">field:</span> <span class="hljs-string">post</span><br>    <span class="hljs-attr">format:</span> <span class="hljs-string">html</span><br>    <span class="hljs-attr">limit:</span> <span class="hljs-number">10000</span><br></code></pre></td></tr></table></figure></li>
+<li>编辑主题配置文件，启用本地搜索功能：   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Local search</span><br><span class="hljs-attr">local_search:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>支持推送Github pages<ul>
+<li>安装插件，在站点的根目录下执行以下命令：<br><code>$ npm install hexo-deployer-git --save</code></li>
+<li>编辑站点配置文件，新增以下内容到任意位置：   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-string">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-string">repository:</span> <span class="hljs-string">https://github.com/winskin/winskin.github.io.git</span><br>  <span class="hljs-string">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>主要命令说明：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新建页面</td>
+<td>hexo new <name></td>
+<td>默认新建到_posts即为博文，也可以新建其他类型</td>
+</tr>
+<tr>
+<td>生成文件</td>
+<td>hexo g</td>
+<td>生成文件，为html文件，用于部署</td>
+</tr>
+<tr>
+<td>清理生成文件</td>
+<td>hexo clean</td>
+<td>清理生成的文件夹public，和文件db.json</td>
+</tr>
+<tr>
+<td>本地运行</td>
+<td>hexo s</td>
+<td>本地运行public文件，访问地址问：localhost:4000（刷新配置时不需要重启）</td>
+</tr>
+<tr>
+<td>发布部署</td>
+<td>hexo d</td>
+<td>发布到仓库，这里使用的是github，自动提交push，并Github Pages会自动运行渲染</td>
+</tr>
+</tbody></table>
+<ol start="10">
+<li>总结</li>
+</ol>
+<p>因为Hexo把Markdown和发布用的html分成两个部分，即需要两个仓库存储（或一个服务一个版本控制），我是新建一个仓库存储<folder>，再其他电脑下载<folder>的文件后，装上NodeJs和Git就能快速搭建已有的博客环境，与jekyll相比麻烦了不少，但是更加灵活，各有好处吧。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/31/2019-12-31-Jdk8%E5%AE%89%E5%85%A8%E5%8C%85%E5%8A%A0%E5%AF%86%E9%97%AE%E9%A2%98/" rel="prev" title="java.security.InvalidKeyException: Illegal key size">
+      <i class="fa fa-chevron-left"></i> java.security.InvalidKeyException: Illegal key size
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/19/2020-01-19-MapStruct%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" rel="next" title="MapStruct的简单使用">
+      MapStruct的简单使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo环境"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo本地环境搭建"><span class="nav-number">1.3.</span> <span class="nav-text">Hexo本地环境搭建</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Raven"
+      src="/images/my-avatar.gif">
+  <p class="site-author-name" itemprop="name">Raven</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/winskin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;winskin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Raven</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

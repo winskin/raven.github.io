@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":"ture"},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="f0.95">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="f0.95">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Raven">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>f0.95</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?502b6e1566ea20bb7678cc0d64a498cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">f0.95</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/winskin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/20/2020-01-20-%E5%AF%BB%E6%89%BE%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/20/2020-01-20-%E5%AF%BB%E6%89%BE%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%B3%95/" class="post-title-link" itemprop="url">寻找适合自己的记账法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-20 13:59:30 / 修改时间：16:28:54" itemprop="dateCreated datePublished" datetime="2020-01-20T13:59:30+08:00">2020-01-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p>使用手机软件记账，且只记录支出流水，原因如下：</p>
+<ul>
+<li>不放心把余额记录在别人的服务器上(真香警告)。</li>
+<li>贪方便，追查明细到每一笔的流向非常麻烦，因此只记录支出，毕竟知道自己花了多少，对一对还是有点用的，得益于这种支出记账法的方便坚持了两年。</li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天无意中看到了一种叫<code>复式记账法</code>，查了一下发现是会计财务用的记账法，记账菜鸡的我看上去甚是高级，也简单用Excel试了一下，感觉清晰明了，于是开始搜查资料落实使用。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%A4%8D%E5%BC%8F%E7%B0%BF%E8%AE%B0" target="_blank" rel="noopener">维基百科</a></li>
+<li><a href="https://baike.baidu.com/item/%E5%A4%8D%E5%BC%8F%E8%AE%B0%E8%B4%A6%E6%B3%95/4823873?fr=aladdin" target="_blank" rel="noopener">百度百科</a></li>
+<li><a href="https://erasin.wang/beancount/" target="_blank" rel="noopener">参考BeanCount博客</a> BeanCount是一种基于Python3的命令式复式记账法</li>
+</ul>
+<h2 id="什么是复式记账法"><a href="#什么是复式记账法" class="headerlink" title="什么是复式记账法"></a>什么是<code>复式记账法</code></h2><p>查询了维基百科和百度百科得知：</p>
+<ul>
+<li><p>在会计学中，复式簿记（又称为复式记账法）是商业及其他组织上记录金融交易的标准系统。</p>
+</li>
+<li><p>该系统之所以称为复式簿记，是因为每笔交易都至少记录在两个不同的账户当中。每笔交易的结果至少被记录在一个借方和一个贷方的账户，且该笔交易的借贷双方总额相等，即“有借必有贷，借贷必相等”。</p>
+</li>
+<li><p>借方项目通常记在左边，贷方则记在右边，空白账簿看起来像个T字，故账户也被称为T字帐。</p>
+</li>
+<li><p>等式控制，</p>
+<p>  复式簿记由会计等式进行控制，如果收入等于费用，则以下等式就会成立：</p>
+<pre><code>资产 = 负债 + 业主权益</code></pre><p>  事实上，收入一般都不会等于费用，因此，在正常情况下，以上等式必须扩充为：</p>
+<pre><code>资产 = 负债 + 业主权益 + （收入 - 费用）</code></pre></li>
+<li><p>可以全面、清晰地反映出经济业务的来龙去脉，而且还能通过会计要素的增减变动，全面系统地反映经济活动的过程和结果。</p>
+</li>
+<li><p>记账规则：有收必有付，收付必相等。</p>
+</li>
+</ul>
+<h2 id="整理概念和使用"><a href="#整理概念和使用" class="headerlink" title="整理概念和使用"></a>整理概念和使用</h2><ol>
+<li><p>概念</p>
+<ul>
+<li>复式记账又分为了借贷记账法，和正负记账法。借 (debits)，贷 (credits)，两者在交易中是双向流动的，因此可以反映出经济活动的来龙去脉。</li>
+<li>资产是负债和权益的总和，负债（Liabilities）也是资产的一部分。</li>
+<li>等式：Assets （资产） = Liabilities （债务） + Equity（权益，或者叫净资产，或者抵押资产）</li>
+</ul>
+</li>
+<li><p>使用方法（参考BeanCount软件）</p>
+<ol>
+<li>账户类型<ul>
+<li>资产 + Assets —— 储蓄卡余额、支付宝余额、股票账户余额、房子、车子固定资产等；</li>
+<li>负债 - Liabilities —— 信用卡、房贷、车贷, 贷款等；</li>
+<li>收入 - Income —— 工资、奖金, 投资收益等；</li>
+<li>费用 + Expenses —— 外出就餐、购物、旅行等；</li>
+<li>权益 - Equity —— 这个账户比较特殊，在账户初始化、误差处理等少数场合使用。</li>
+</ul>
+<ol start="2">
+<li>此外，账户后的金额是带有符号的</li>
+</ol>
+<ul>
+<li>支出账户：一般为正数。表示花费多少钱。</li>
+<li>收入账户：一般为负数。表示收入多少钱。</li>
+<li>投资收入账户可能出现正数，则表示投资亏损。</li>
+<li>资产账户：可正可负。正数表示有钱存入，余额增加； 负数表示有钱转出，余额减少。</li>
+<li>负债账户：可正可负。正数表示还款，负债减少； 负数表示借款，负债增加。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>支出为正，收入为负，有点反直觉，是会计恒等式逻辑所致。会计恒等式具体表述如下：</p>
+<pre><code>(Assets + Expenses) + (Liabilities + Income) + Equity = 0</code></pre><h3 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h3><table>
+<thead>
+<tr>
+<th>操作记录</th>
+<th>资产+</th>
+<th>负债-</th>
+<th>收入-</th>
+<th>费用+</th>
+<th>权益-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>发工资  ¥100.00</td>
+<td>100</td>
+<td></td>
+<td>-100</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>吃饭    ¥10.00</td>
+<td>-10</td>
+<td></td>
+<td></td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>信用卡购物  ¥199.00</td>
+<td></td>
+<td>-199</td>
+<td></td>
+<td>199</td>
+<td></td>
+</tr>
+<tr>
+<td>发工资  ¥200.00</td>
+<td>200</td>
+<td></td>
+<td>-200</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>还信用卡    ¥199.00</td>
+<td>-199</td>
+<td>199</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>统计</td>
+<td>91</td>
+<td></td>
+<td>-300</td>
+<td>209</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>每行记录都是根据等式持平=0，可以清晰知道金额的流向。但是每次操作都需要记录两个以上的账户</p>
+<pre><code>例如信用卡购物的资金流向为：负债-&gt;(资产)-&gt;费用</code></pre><h3 id="寻找使用自己的记账法"><a href="#寻找使用自己的记账法" class="headerlink" title="寻找使用自己的记账法"></a>寻找使用自己的记账法</h3><p>以上为复式记账法的个人理解，优缺点都很明显，因此根据我个人需求进行分析。</p>
+<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><ol>
+<li>记账的主要需求用于控制消费。</li>
+<li>控制消费需要 消费数据 和 负债数据。</li>
+<li>需要一次业务一次操作。</li>
+<li>账户优先级高低：负债&gt;费用&gt;资产</li>
+</ol>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>关注的是负债和费用（即消费），其中消费包括 负债消费 和 资金消费<br>因此需要两个账户：</p>
+<ul>
+<li>负债账户（主负债流水：信用卡，花呗，京东）</li>
+<li>资金账户（主资金流水：微信，支付宝，储蓄卡，现金）</li>
+</ul>
+<p>根据个人情况对应复式记账法分析行为：</p>
+<table>
+<thead>
+<tr>
+<th>业务操作</th>
+<th>复式记账法操作(流向)</th>
+<th>我的操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>收入</td>
+<td>收入-资产</td>
+<td>个人情况，不操作</td>
+</tr>
+<tr>
+<td>资金消费</td>
+<td>资产-费用</td>
+<td>资金账户-支出</td>
+</tr>
+<tr>
+<td>负债消费</td>
+<td>负债-费用</td>
+<td>负债账户-支出</td>
+</tr>
+<tr>
+<td>还款</td>
+<td>资产-负债</td>
+<td>负债账户-还款</td>
+</tr>
+</tbody></table>
+<p>其中支出和还款为行为操作</p>
+<ul>
+<li>支出为消费记录（记录的集合即复式的费用账户）</li>
+<li>还款为负债账户的记录（记录集合即复式的还款流向）</li>
+</ul>
+<p>还有借钱，负债还款都是用手机软件的功能，会形成操作记录</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>复式记账法的特点是等式可以控制平账，且可看金额流向。<br>而我主要控制消费，关注消费情况和负债是否在合理消费，同时为了减少记账操作。<br>了解复式记账法可以更灵活调整适合自己的记账方法，网上也有复式记账的手机软件，无论是复式还是单账都要寻找适合自己的，不要为了记账而记账。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/2020-01-19-MapStruct%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/19/2020-01-19-MapStruct%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">MapStruct的简单使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-19 11:15:44 / 修改时间：14:38:17" itemprop="dateCreated datePublished" datetime="2020-01-19T11:15:44+08:00">2020-01-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因项目的DTO越来越多，且不同层级的DTO和javabean需要转换，大量使用bean.copy方法，造成性能下降，阅读性差的问题，准备引入MapStruct进行javabean数据的映射转换。</p>
+<h2 id="MapStruct是什么"><a href="#MapStruct是什么" class="headerlink" title="MapStruct是什么"></a>MapStruct是什么</h2><p>MapStruct是一个Java注释处理器，用于为Java bean类生成类型安全和高性能的映射器。它使您不必手工编写映射代码，这是一个繁琐且容易出错的任务。该生成器具有合理的默认值和许多内置的类型转换，但是在配置或实现特殊行为时，它会自动退出。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>通过使用普通方法调用而不是反射来快速执行</li>
+<li>编译时类型安全。只能映射彼此映射的对象和属性，因此不会将实体意外映射到客户DTO等等。</li>
+<li>独立代码-没有运行时依赖</li>
+<li>在构建时清除错误报告，如：<br> a. 映射不完整（并非所有目标属性都被映射）<br> b. 映射不正确（找不到正确的映射方法或类型转换）</li>
+<li>易于调试的映射代码（或可以手动编辑，例如，如果生成器中有错误）</li>
+</ol>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p>这里使用的是MapStruct 1.3.1版本，需要Java 1.8或以上（1.2.x版本好像不支持Java 1.8，需要其他包代替）</p>
+<h2 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a>简单说明</h2><p>需要在两种类型之间创建映射，请声明一个映射器类，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Mapper</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CarMapper</span> </span>&#123;<br>    CarMapper INSTANCE = Mappers.getMapper( CarMapper<span class="hljs-class">.<span class="hljs-keyword">class</span> )</span>;<br>    <span class="hljs-meta">@Mapping</span>(source = <span class="hljs-string">"numberOfSeats"</span>, target = <span class="hljs-string">"seatCount"</span>)<br>    <span class="hljs-function">CarDto <span class="hljs-title">carToCarDto</span><span class="hljs-params">(Car car)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在编译时，MapStruct将生成此接口的实现。生成的实现使用简单的Java方法调用在源对象和目标对象之间进行映射，即不涉及反射。默认情况下，如果属性在源和目标中具有相同的名称，则将映射它们，但是您可以使用@Mapping和少量其他注释来控制此属性和许多其他方面。</p>
+<h2 id="开发工具插件"><a href="#开发工具插件" class="headerlink" title="开发工具插件"></a>开发工具插件</h2><p>IntelliJ idea 中可在插件市场中下载使用插件（<a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/10036-mapstruct-support</a>）<br>    PS：这里用到Lombok，因此也需要下载idea插件市场的一个Lombok插件</p>
+<p>确保您idea版本至少为 2018.2.x（由于对maven-compiler-plugin的注解处理器的支持来自该版本，因此是必需的）。<br>在IntelliJ中启用注释处理（Build, Execution, Deployment -&gt; Compiler -&gt; Annotation Processors）</p>
+<h2 id="Maven环境配置"><a href="#Maven环境配置" class="headerlink" title="Maven环境配置"></a>Maven环境配置</h2><p>对于基于Maven的项目，将以下内容添加到您的POM文件中以使用MapStruct（依赖关系在Maven Central中可用）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs xml">...<br><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">org.mapstruct.version</span>&gt;</span>1.3.1.Final<span class="hljs-tag">&lt;/<span class="hljs-name">org.mapstruct.version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>...<br><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mapstruct<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mapstruct<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br>...<br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">annotationProcessorPaths</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mapstruct<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mapstruct-processor<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;org.mapstruct.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><br>                    <br>                    <span class="hljs-comment">&lt;!--添加Lombok的注册处理器--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">annotationProcessorPaths</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br>...<br></code></pre></td></tr></table></figure>
+
+<h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><p>当MapStruct和Lombok混合使用时，会出现异常，找不到字段：<br><code>Warning:java: 来自注释处理程序 &#39;net.java.dev.hickory.prism.internal.PrismGenerator&#39; 的受支持 source 版本 &#39;RELEASE_6&#39; 低于 -source &#39;1.8&#39;</code><br><code>Error:(101, 16) java: No property named &quot;numberOfSeats&quot; exists in source parameter(s). Did you mean &quot;null&quot;?</code></p>
+<p>解决方法只需要在&lt;maven-compiler-plugin&gt;节点的&lt;annotationProcessorPaths&gt;中添加:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--添加Lombok的注册处理器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">path</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="下面是代码"><a href="#下面是代码" class="headerlink" title="下面是代码"></a>下面是代码</h2><table>
+<thead>
+<tr>
+<th>需要</th>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>源实体</td>
+<td>Car</td>
+<td>数据来源实体，数据库实体(this) 转换到 DTO</td>
+</tr>
+<tr>
+<td>目标实体</td>
+<td>CarDto</td>
+<td>转换目标实体，DTO 转换到 响应实体(this)</td>
+</tr>
+<tr>
+<td>映射interface</td>
+<td>CarMapper</td>
+<td>定义用于转换映射的interface，MapStruct会实现这个接口</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> raven.spring.study;<br><br><span class="hljs-keyword">import</span> lombok.AllArgsConstructor;<br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> lombok.Getter;<br><span class="hljs-keyword">import</span> lombok.ToString;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><span class="hljs-keyword">import</span> org.mapstruct.Mapper;<br><span class="hljs-keyword">import</span> org.mapstruct.Mapping;<br><span class="hljs-keyword">import</span> org.mapstruct.factory.Mappers;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapStructTests</span> </span>&#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shouldMapCarToDtoTest</span><span class="hljs-params">()</span> </span>&#123;<br><br>        <span class="hljs-comment">// 实例化数据对象</span><br>        Car car = <span class="hljs-keyword">new</span> Car( <span class="hljs-string">"Morris"</span>, <span class="hljs-number">5</span>, CarType.SEDAN ,<span class="hljs-number">200.19</span>);<br><br>        <span class="hljs-comment">// 获得映射实例, 并调用转换方法</span><br>        CarDto carDto = CarMapper.INSTANCE.carToCarDto(car);<br><br>        System.out.println(car);<br>        System.out.println(carDto);<br><br>        System.out.println(<span class="hljs-string">"同类型同名:"</span> + carDto.getMake().equals(<span class="hljs-string">"Morris"</span>));<br>        System.out.println(<span class="hljs-string">"同类型非同名"</span> + (carDto.getSeatCount() == (<span class="hljs-number">5</span>)));<br>        System.out.println(<span class="hljs-string">"字符串-枚举:"</span> + carDto.getType().equals(<span class="hljs-string">"SEDAN"</span>));<br>        System.out.println(<span class="hljs-string">"非同类型非同名:"</span> + carDto.getMaxCarSpeed().equals(String.valueOf(car.getMaxSpeed())));<br><br>        <span class="hljs-comment">/*<br>        打印结果:<br>            Car&#123;make='Morris', numberOfSeats=5, type=CarType&#123;key='SEDAN'&#125;, maxSpeed=200.19&#125;<br>            CarDto&#123;make='Morris', seatCount=5, type='SEDAN', maxCarSpeed='200.19'&#125;<br>            同类型同名:true<br>            同类型非同名true<br>            字符串-枚举:true<br>            非同类型非同名:true<br>        */</span><br>    &#125;<br><br>&#125;<br><br><span class="hljs-comment">// 数据实体-&gt;DTO 两种类型非常相似，只有座位数属性具有不同的名称，并且类型属性在Car类中具有特殊的枚举类型，但在DTO中是纯字符串。</span><br><br><span class="hljs-comment">/**<br>* 数据实体<br>*/</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@ToString</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> String make;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> numberOfSeats;<br>    <span class="hljs-keyword">private</span> CarType type;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> maxSpeed;<br>&#125;<br><br><span class="hljs-comment">/**<br>* 传输DTO<br>*/</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@ToString</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CarDto</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> String make;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> seatCount;<br>    <span class="hljs-keyword">private</span> String type;<br>    <span class="hljs-keyword">private</span> String maxCarSpeed;<br>&#125;<br><br><br><span class="hljs-comment">/**<br>* 枚举<br>*/</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@Getter</span><br><span class="hljs-keyword">enum</span> CarType &#123;<br>    SEDAN(<span class="hljs-string">"SEDAN"</span>);<br>    <span class="hljs-keyword">private</span> String key;<br>&#125;<br><br><span class="hljs-comment">/**<br>* 映射器<br>* 从Car对象中创建CarDto对象，需要定义一个映射器接口<br>*/</span><br><span class="hljs-comment">// @Mapper将接口标记为映射接口，并让MapStruct处理器在编译期间启动。</span><br><span class="hljs-comment">// 对于源对象和目标对象中名称不同的属性，@Mapping可用于配置名称。</span><br><span class="hljs-comment">// 当然，一个接口中可以有多种映射方法，MapStruct将为所有接口生成一个实现。</span><br><span class="hljs-meta">@Mapper</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CarMapper</span> </span>&#123;<br><br>    <span class="hljs-comment">// 可以从Mappers类检索接口实现的实例。按照约定，该接口声明一个成员INSTANCE，为客户端提供对映射器实现的访问。</span><br>    CarMapper INSTANCE = Mappers.getMapper( CarMapper<span class="hljs-class">.<span class="hljs-keyword">class</span> )</span>;<br><br>    <span class="hljs-comment">// 实际的映射方法将源对象作为参数并返回目标对象。其名称可以自由选择。</span><br>    <span class="hljs-comment">// 在必要和可能的情况下，将对源和目标中具有不同类型的属性执行类型转换，例如type属性将从枚举类型转换为字符串。</span><br>    <span class="hljs-meta">@Mapping</span>(source = <span class="hljs-string">"numberOfSeats"</span>, target = <span class="hljs-string">"seatCount"</span>)<br>    <span class="hljs-meta">@Mapping</span>(source = <span class="hljs-string">"maxSpeed"</span>, target = <span class="hljs-string">"maxCarSpeed"</span>)<br>    <span class="hljs-function">CarDto <span class="hljs-title">carToCarDto</span><span class="hljs-params">(Car car)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用起来还是挺方便的，只需要新建一个映射器即可使用，不同的类型或者字段也能标记映射，阅读性更高，维护性也高。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/18/2020-01-18-Hexo%E5%92%8CGithubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/18/2020-01-18-Hexo%E5%92%8CGithubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo和GithubPages搭建博客</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-18 10:26:09" itemprop="dateCreated datePublished" datetime="2020-01-18T10:26:09+08:00">2020-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:36" itemprop="dateModified" datetime="2020-01-19T14:38:36+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Github Pages之前使用<code>jekyll</code>搭建，好处是博客代码和Markdown可以放在同一个github仓库统一管理版本控制，但是换博客主题感觉有点麻烦，就有了<code>jekyll</code>换成<code>Hexo</code>的想法。</p>
+<h3 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p>官网文档：<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/index.html</a></p>
+<p>与jekyll相比：</p>
+<ul>
+<li>jekyll提交Markdown到Github Pages就可以渲染部署使用；Hexo需要本地生成（编译？）后再推到服务器或者Github Pages才能部署使用。</li>
+<li>jekyll放在Github Pages上的文件是Markdown；Hexo放到Github Pages上的文件是Html。</li>
+<li>Hexo可以本地运行，预览博客效果</li>
+<li>Hexo更换主题很方便；jekyll则Markdown放到主题文件里，更改比较麻烦</li>
+</ul>
+<h3 id="Hexo环境"><a href="#Hexo环境" class="headerlink" title="Hexo环境"></a>Hexo环境</h3><ul>
+<li><a href='https://nodejs.org/' target="_blank" rel="noopener">NodeJs</a>(Node.js 版本需不低于 8.10，建议使用 Node.js 10.0 及以上版本)</li>
+<li><a href='https://git-scm.com/' target="_blank" rel="noopener">Git</a></li>
+</ul>
+<h3 id="Hexo本地环境搭建"><a href="#Hexo本地环境搭建" class="headerlink" title="Hexo本地环境搭建"></a>Hexo本地环境搭建</h3><ol>
+<li>安装Hexo<br> <code>$ npm install -g hexo-cli</code></li>
+<li>初始化<br> <code>$ hexo init &lt;folder&gt;</code><br> <code>$ cd &lt;folder&gt;</code><br> <code>$ npm install</code></li>
+<li>下载博客主题，这里用的是Next<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a></li>
+<li>clone或者下载好后放到<code>theme</code>文件夹<ul>
+<li><folder>根目录下的<code>_config.yml</code>是站点配置（即博客的生成配置），<code>&lt;folder&gt;/theme/&lt;主题文件夹&gt;</code>下的<code>_config.yml</code>是主题配置</li>
+</ul>
+</li>
+<li>修改站点配置<code>_config.yml</code><ul>
+<li>有空格bug，需要删除空格（菜单路径都要删除空格）如: _config.yml 95行<code>home: / || home</code>改为<code>home: /|| home</code></li>
+<li>语言改为中文 language: zh-Hans （Next 6.0后使用 zh-CN）</li>
+</ul>
+</li>
+<li>添加页面<ul>
+<li>添加tags</li>
+<li>命令：<code>$ hexo new page tags</code><br>确认站点配置文件里有tag_dir: tags<br>确认主题配置文件里有tags: /tags<br>编辑站点的<folder>/source/tags/index.md，添加<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2015</span><span class="hljs-number">-10</span><span class="hljs-number">-20</span> <span class="hljs-number">06</span><span class="hljs-string">:49:50</span><br><span class="hljs-attr">type:</span> <span class="hljs-string">"tags"</span><br><span class="hljs-attr">comments:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li>
+<li>添加分类</li>
+<li>命令：<code>$ hexo new page categories</code><br>确认站点配置文件里有category_dir: categories<br>确认主题配置文件里有categories: /categories<br>编辑站点的<folder>source/categories/index.md，添加<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">categories</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2015</span><span class="hljs-number">-10</span><span class="hljs-number">-20</span> <span class="hljs-number">06</span><span class="hljs-string">:49:50</span><br><span class="hljs-attr">type:</span> <span class="hljs-string">"categories"</span><br><span class="hljs-attr">comments:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>添加本地搜索<ul>
+<li>安装插件 hexo-generator-searchdb，在站点的根目录下执行以下命令：<br><code>$ npm install hexo-generator-searchdb --save</code></li>
+<li>编辑站点配置文件，新增以下内容到任意位置：   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">search:</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">search.xml</span><br>    <span class="hljs-attr">field:</span> <span class="hljs-string">post</span><br>    <span class="hljs-attr">format:</span> <span class="hljs-string">html</span><br>    <span class="hljs-attr">limit:</span> <span class="hljs-number">10000</span><br></code></pre></td></tr></table></figure></li>
+<li>编辑主题配置文件，启用本地搜索功能：   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Local search</span><br><span class="hljs-attr">local_search:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>支持推送Github pages<ul>
+<li>安装插件，在站点的根目录下执行以下命令：<br><code>$ npm install hexo-deployer-git --save</code></li>
+<li>编辑站点配置文件，新增以下内容到任意位置：   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-string">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-string">repository:</span> <span class="hljs-string">https://github.com/winskin/winskin.github.io.git</span><br>  <span class="hljs-string">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>主要命令说明：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新建页面</td>
+<td>hexo new <name></td>
+<td>默认新建到_posts即为博文，也可以新建其他类型</td>
+</tr>
+<tr>
+<td>生成文件</td>
+<td>hexo g</td>
+<td>生成文件，为html文件，用于部署</td>
+</tr>
+<tr>
+<td>清理生成文件</td>
+<td>hexo clean</td>
+<td>清理生成的文件夹public，和文件db.json</td>
+</tr>
+<tr>
+<td>本地运行</td>
+<td>hexo s</td>
+<td>本地运行public文件，访问地址问：localhost:4000（刷新配置时不需要重启）</td>
+</tr>
+<tr>
+<td>发布部署</td>
+<td>hexo d</td>
+<td>发布到仓库，这里使用的是github，自动提交push，并Github Pages会自动运行渲染</td>
+</tr>
+</tbody></table>
+<ol start="10">
+<li>总结</li>
+</ol>
+<p>因为Hexo把Markdown和发布用的html分成两个部分，即需要两个仓库存储（或一个服务一个版本控制），我是新建一个仓库存储<folder>，再其他电脑下载<folder>的文件后，装上NodeJs和Git就能快速搭建已有的博客环境，与jekyll相比麻烦了不少，但是更加灵活，各有好处吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/2019-12-31-Jdk8%E5%AE%89%E5%85%A8%E5%8C%85%E5%8A%A0%E5%AF%86%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/31/2019-12-31-Jdk8%E5%AE%89%E5%85%A8%E5%8C%85%E5%8A%A0%E5%AF%86%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">java.security.InvalidKeyException: Illegal key size</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-31 17:17:36" itemprop="dateCreated datePublished" datetime="2019-12-31T17:17:36+08:00">2019-12-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:41" itemprop="dateModified" datetime="2020-01-19T14:38:41+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bug/" itemprop="url" rel="index">
+                    <span itemprop="name">bug</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>开发微信第三方平台中，使用微信解密，开发环境一切正常，生产环境解密异常<code>java.security.InvalidKeyException: Illegal key size</code>。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>由于jdk限制策略，导致只能128位key进行加解密，而256位加解密则抛出异常。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>替换加密解密使用的包：<code>jar/lib/security</code>中的<code>local_policy.jar</code>和<code>US_export_policy.jar</code>。</li>
+<li>替换包下载地址：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html</a></li>
+<li>替换后重启服务即可。</li>
+</ul>
+<h2 id="如何从Centos中找到java的路径"><a href="#如何从Centos中找到java的路径" class="headerlink" title="如何从Centos中找到java的路径"></a>如何从Centos中找到java的路径</h2><p>命令：</p>
+<ul>
+<li><p>which java</p>
+<p>  [结果：/usr/bin/java]</p>
+</li>
+<li><p>ls -lrt /usr/bin/java</p>
+<p>  [结果：/usr/bin/java -&gt; /etc/alternatives/java]</p>
+</li>
+<li><p>ls -lrt /etc/alternatives/java</p>
+<p>  [结果：/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64/jre/bin/java]</p>
+</li>
+<li><p>cd /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64/jre/bin/java</p>
+<p>  该目录就是java的目录。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/2019-12-28-springboot2%E5%8D%87%E7%BA%A7%E5%9D%91Feign/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/28/2019-12-28-springboot2%E5%8D%87%E7%BA%A7%E5%9D%91Feign/" class="post-title-link" itemprop="url">SpringBoot2升级坑-Feign</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-28 09:07:45" itemprop="dateCreated datePublished" datetime="2019-12-28T09:07:45+08:00">2019-12-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:12" itemprop="dateModified" datetime="2020-01-19T14:38:12+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SpringBoot1.x升级到SpringBoot2.x；SpringCloud从Camden升级到Hoxton后出现的不兼容问题。</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><table>
+<thead>
+<tr>
+<th>升级前名字</th>
+<th>升级前版本号</th>
+<th>升级后名字</th>
+<th>升级后版本号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>org.springframework</td>
+<td>4.x</td>
+<td>org.springframework</td>
+<td>5.2.2.RELEASE</td>
+</tr>
+<tr>
+<td>org.springframework.boot</td>
+<td>1.4.x</td>
+<td>org.springframework.boot</td>
+<td>2.2.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud</td>
+<td>Camden.RELEASE (1.x)</td>
+<td>spring-cloud</td>
+<td>Hoxton.RELEASE (2.2.0)</td>
+</tr>
+<tr>
+<td>spring-cloud-starter-feign</td>
+<td>1.2.7.RELEASE</td>
+<td>spring-cloud-starter-openfeign</td>
+<td>2.2.0.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-starter-hystrix</td>
+<td>1.2.7.RELEASE</td>
+<td>spring-cloud-starter-netflix-hystrix</td>
+<td>2.2.0.RELEASE</td>
+</tr>
+</tbody></table>
+<p>升级后，其中的<code>Feign</code>和<code>Hystrix</code>包名完全更改，可以看出<code>Feign</code>的1.x使用的是Netflix开发的包，而2.x使用的是OpenFeign包。</p>
+<h2 id="在SpringCloud中使用Feign的区别"><a href="#在SpringCloud中使用Feign的区别" class="headerlink" title="在SpringCloud中使用Feign的区别"></a>在SpringCloud中使用Feign的区别</h2><pre><code>Netflix版本Feign提供的spring扫描器与OpenFeign版本的不一样，因此会出现以下情况。</code></pre><ol>
+<li><p>Netflix版本（spring-cloud-starter-feign 1.2.7.RELEASE）</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@FeignClient</span>(value=ServiceConfig.SERVICE_NAME,      <span class="hljs-comment">//客户端名称,负载均衡用,Eureka中充当服务名</span><br>            path=ServiceConfig.CONTEXT_PATH         <span class="hljs-comment">//全局路径/前缀,微服务中一般为项目名等(如/login-service)</span><br>)<br></code></pre></td></tr></table></figure>
+
+<p> value是客户端的名称，但在Eureka中充当的是服务名，Spring扫描Bean时使用的是ClassName，因此使用@FeignClient注解所在类的类名充当bean的唯一标识。</p>
+</li>
+<li><p>OpenFeign版本（spring-cloud-starter-openfeign 2.2.0.RELEASE）</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@FeignClient</span>(contextId=<span class="hljs-string">"client_id"</span>,          <span class="hljs-comment">//客户端名称,只区分每个客户端类的bean唯一标识,与服务id不同</span><br>        value=ServiceConfig.SERVICE_NAME,    <span class="hljs-comment">//客户端名称,负载均衡用,Eureka中充当服务名</span><br>        path=ServiceConfig.CONTEXT_PATH      <span class="hljs-comment">//全局路径/前缀,微服务中一般为项目名等(如/login-service)</span><br>)<br></code></pre></td></tr></table></figure>
+
+<p> 在2.2.0版本中，使用和1.2.7是一样的，但是Spring扫描Bean的时候使用的是name/value，因此在Eureka中同服务的客户端value都是同一个服务名，启动时候会报错：bean重复。</p>
+</li>
+</ol>
+<h2 id="升级后的解决方法（两种方法选择其中一种即可）"><a href="#升级后的解决方法（两种方法选择其中一种即可）" class="headerlink" title="升级后的解决方法（两种方法选择其中一种即可）"></a>升级后的解决方法（两种方法选择其中一种即可）</h2><ul>
+<li>在@FeignClient后加入参数<code>contextId=&quot;client_id&quot;</code>，为客户端的唯一标识，只用于区分bean。</li>
+<li>在配置中加入<code>spring.main.allow-bean-definition-overriding=true</code>，允许bean覆盖。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/2019-12-19-Base64Encoder%E5%92%8CBase64Decoder%E5%9C%A8Jdk9%E8%A2%AB%E5%88%A0%E9%99%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/2019-12-19-Base64Encoder%E5%92%8CBase64Decoder%E5%9C%A8Jdk9%E8%A2%AB%E5%88%A0%E9%99%A4/" class="post-title-link" itemprop="url">Base64Encoder和Base64Decoder在Jdk9被删除</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-19 14:54:58" itemprop="dateCreated datePublished" datetime="2019-12-19T14:54:58+08:00">2019-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:53" itemprop="dateModified" datetime="2020-01-19T14:38:53+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bug/" itemprop="url" rel="index">
+                    <span itemprop="name">bug</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Base64Encoder和Base64Decoder在Jdk9被删除"><a href="#Base64Encoder和Base64Decoder在Jdk9被删除" class="headerlink" title="Base64Encoder和Base64Decoder在Jdk9被删除"></a>Base64Encoder和Base64Decoder在Jdk9被删除</h2><p>参考转载博客 来自<a href="https://blog.csdn.net/Cha0DD/article/details/87794268" target="_blank" rel="noopener">https://blog.csdn.net/Cha0DD/article/details/87794268</a></p>
+<h3 id="问题起因"><a href="#问题起因" class="headerlink" title="问题起因"></a>问题起因</h3><p>项目使用了Base64Encoder和Base64Decoder两个类，都来自sun包，idea编译时会提示<code>该类是内部Api，可能会在未来版本删除</code>，在升级springboot2的频繁编译测试后强迫症犯了</p>
+<h3 id="查询结果"><a href="#查询结果" class="headerlink" title="查询结果"></a>查询结果</h3><ul>
+<li><p>Jdk8的使用，所在包 <code>package sun.misc;</code></p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">BASE64Encoder encoder = <span class="hljs-keyword">new</span> BASE64Encoder();<br>String imagestr =  encoder.encode(captcha);<br><br>BASE64Decoder decoder = <span class="hljs-keyword">new</span> BASE64Decoder();<br><span class="hljs-keyword">byte</span>[] bytes = decoder.decodeBuffer(imagestr);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Jdk9的使用，已经无法使用<code>sun.misc.BASE64Encoder</code>和<code>sun.misc.BASE64Decoder</code></p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Base64.Encoder;<br><span class="hljs-keyword">import</span> java.util.Base64.Decoder;<br><br>Encoder encoder = Base64.getEncoder();<br>String result = encoder.encodeToString(byteArray);<br><br>Decoder decoder = Base64.getDecoder();<br><span class="hljs-keyword">byte</span>[] result = decoder.decode(str);<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>原因是/lib/tool.jar和/lib/rt.jar已经从Java SE 9中删除</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/2019-12-19-Python%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/2019-12-19-Python%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1/" class="post-title-link" itemprop="url">Python循环陷阱-删除</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-19 14:42:52" itemprop="dateCreated datePublished" datetime="2019-12-19T14:42:52+08:00">2019-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:48" itemprop="dateModified" datetime="2020-01-19T14:38:48+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bug/" itemprop="url" rel="index">
+                    <span itemprop="name">bug</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Python循环陷阱-删除"><a href="#Python循环陷阱-删除" class="headerlink" title="Python循环陷阱-删除"></a>Python循环陷阱-删除</h2><h3 id="使用数组循环删除时引发的问题"><a href="#使用数组循环删除时引发的问题" class="headerlink" title="使用数组循环删除时引发的问题"></a>使用数组循环删除时引发的问题</h3><h4 id="Demo-Debug"><a href="#Demo-Debug" class="headerlink" title="Demo Debug"></a>Demo Debug</h4><ol>
+<li><p>Demo1</p>
+<ul>
+<li><p>正常循环数组，一共有6个元素，从索引0开始到索引5结束(下图为未开始循环)<br><img src="/assets%5Cimages%5Cblog-images%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1-%E5%88%A0%E9%99%A4Debug1-1.png" alt="Image text"></p>
+</li>
+<li><p>当循环第一次的时，i=1，即list_1[1]取得2，进入if判断ture并删除；循环第二次时，i=2，即list_1[2]取得4(下图为循环第2次)<br><img src="/assets%5Cimages%5Cblog-images%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1-%E5%88%A0%E9%99%A4Debug1-2.png" alt="Image text"></p>
+</li>
+<li><p>当第五次循环时，i=5，即list_1[5]，数组越界报错IndexError，(下图为循环第5次)<br><img src="/assets%5Cimages%5Cblog-images%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1-%E5%88%A0%E9%99%A4Debug1-3.png" alt="Image text"></p>
+<p>由此可见，触发删除元素时list_1[1]=2变为list_1[1]=3，后面的元素下标索引全部前进一位，补充删除的位置，同时位数-1</p>
+</li>
+</ul>
+</li>
+<li><p>Demo2</p>
+<ul>
+<li><p>正常循环数组，一共有6个元素，从索引0开始到索引5结束(下图为第1次循环，未删除)<br><img src="/assets%5Cimages%5Cblog-images%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1-%E5%88%A0%E9%99%A4Debug2-1.png" alt="Image text"></p>
+</li>
+<li><p>第一次循环结束并删除第一个元素后，进入循环第二次判断，可见list_2[0]=1变成list_2[0]=2, 与Demo1一样全部元素前进一位<br><img src="/assets%5Cimages%5Cblog-images%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1-%E5%88%A0%E9%99%A4Debug2-2.png" alt="Image text"></p>
+</li>
+<li><p>循环第三次，下标索引为2，获得i=5，执行完成后，因数组长度为3，已遍历完毕，打印[2, 4, 6]<br><img src="/assets%5Cimages%5Cblog-images%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1%5CPython%E5%BE%AA%E7%8E%AF%E9%99%B7%E9%98%B1-%E5%88%A0%E9%99%A4Debug2-3.png" alt="Image text"></p>
+<p>由此可见，每次删除一个元素，该元素后面的元素都会向前一位，同时数组长度-1，Demo2的循环删除数组也不会清空，因前进一位躲过一劫，数组长度为原长度的1/2</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ol>
+<li><p>方法1：反向遍历</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 问题二</span><br>list_2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> list_2[::<span class="hljs-number">-1</span>]:<br>    list_2.remove(i)<br>print(list_2)   <span class="hljs-comment"># []</span><br></code></pre></td></tr></table></figure>
+
+<p> 使用反向遍历，每次删除元素都会向前，而每次遍历都是最后一位开始，则可以正常遍历所有元素</p>
+</li>
+<li><p>方法2：copy一个临时数组，用于遍历</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 问题二</span><br>list_2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]<br>list_tmp = list_2.copy()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> list_tmp:<br>    list_2.remove(i)<br>print(list_2)   <span class="hljs-comment"># []</span><br></code></pre></td></tr></table></figure>
+
+<p> 使用copy()方法复制出一个临时数组list_tmp，循环遍历list_tmp，操作则使用list_2原数组</p>
+</li>
+<li><p>Demo1的解决方法也可以方法2的copy临时数组处理</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 问题一</span><br>list_1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]<br>list_tmp = list_1.copy()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(list_tmp)):<br>    <span class="hljs-keyword">if</span> list_tmp[i] == <span class="hljs-number">2</span>:<br>        list_1.pop(i)<br><br>print(list_1) <span class="hljs-comment"># [1, 3, 4, 5, 6]</span><br></code></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>python的数组循环删除会直接影响或打乱下标索引的位置，若删除元素应尽量避免使用下标索引获取元素，且copy临时数组的性能比较糟糕，建议使用反向循环（即方法1）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/22/2019-11-22-SnowFlake%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/22/2019-11-22-SnowFlake%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">SnowFlake雪花算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-22 10:42:58" itemprop="dateCreated datePublished" datetime="2019-11-22T10:42:58+08:00">2019-11-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:38:59" itemprop="dateModified" datetime="2020-01-19T14:38:59+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="雪花算法生成分布式id"><a href="#雪花算法生成分布式id" class="headerlink" title="雪花算法生成分布式id"></a>雪花算法生成分布式id</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>雪花算法的原始版本是scala版，用于生成分布式ID（纯数字，时间顺序）,订单编号等。<br>SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞(由datacenter数据中心ID和workerId机器ID作区分)，并且效率较高，经测试，SnowFlake每秒能够产生26万ID左右。</p>
+<p>其他id:</p>
+<ol>
+<li>自增ID：对于数据敏感场景不宜使用，且不适合于分布式场景。</li>
+<li>GUID：采用无意义字符串，数据量增大时造成访问过慢，且不宜排序。</li>
+</ol>
+<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="/assets%5Cimages%5Cblog-images%5CSnowFlakeId.png" alt="Image text"></p>
+<ul>
+<li>1位标识，由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，所以id一般是正数，最高位是0</li>
+<li>41位时间截(毫秒级)，注意，41位时间截不是存储当前时间的时间截，而是存储时间截的差值（当前时间截 - 开始时间截)，</li>
+<li>开始时间截一般是我们的id生成器开始使用的时间，由我们程序来指定的。</li>
+<li>41位的时间截，可以使用69年，年T = <code>(1L &lt;&lt; 41) / (1000L * 60 * 60 * 24 * 365) = 69</code></li>
+<li>10位的数据机器位，可以部署在1024个节点，包括5位datacenterId和5位workerId</li>
+<li>12位序列，毫秒内的计数，12位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生4096个ID序号<br>加起来刚好64位，为一个Long型。(转换成字符串后长度最多19)</li>
+</ul>
+<p>优点：</p>
+<ol>
+<li>毫秒数在高位，自增序列在低位，整个ID都是趋势递增的。</li>
+<li>不依赖数据库等第三方系统，以服务的方式部署，稳定性更高，生成ID的性能也是非常高的。</li>
+<li>可以根据自身业务特性分配bit位，非常灵活。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>强依赖机器时钟，如果机器上时钟回拨，会导致发号重复或者服务会处于不可用状态。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">面试题-sql批量更新</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-08 16:46:43" itemprop="dateCreated datePublished" datetime="2019-10-08T16:46:43+08:00">2019-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:39:06" itemprop="dateModified" datetime="2020-01-19T14:39:06+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="面试题目"><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2><p><code>根据成绩表的数据统计以后更新学生表的total_score字段(即根据学生选修课程的成绩更新的总分)</code></p>
+<h2 id="表结构和数据语句"><a href="#表结构和数据语句" class="headerlink" title="表结构和数据语句"></a>表结构和数据语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student<br>(<br>    <span class="hljs-keyword">id</span> <span class="hljs-built_in">bigint</span> auto_increment,<br>    stu_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'学生姓名'</span>,<br>    total_score <span class="hljs-built_in">decimal</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'总分'</span>,<br>    <span class="hljs-keyword">constraint</span> student_pk<br>        primary <span class="hljs-keyword">key</span> (<span class="hljs-keyword">id</span>)<br>)<br><span class="hljs-keyword">comment</span> <span class="hljs-string">'学生表'</span>;<br><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> course_score<br>(<br>    stu_id <span class="hljs-built_in">bigint</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'学生id'</span>,<br>    course_id <span class="hljs-built_in">bigint</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'课程id'</span>,<br>    score <span class="hljs-built_in">decimal</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0.00</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'课程分数'</span><br>)<br><span class="hljs-keyword">comment</span> <span class="hljs-string">'选修课程成绩表'</span>;<br><br><br><span class="hljs-comment"># 新增学生数据</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'刘德华'</span>, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">2</span>, <span class="hljs-string">'张学友'</span>, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">3</span>, <span class="hljs-string">'郭富城'</span>, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment"># 新增课程分数数据</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">95</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">85</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">75</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="更新sql"><a href="#更新sql" class="headerlink" title="更新sql"></a>更新sql</h2><ol>
+<li><p>mysql</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span><br>    student s <span class="hljs-keyword">join</span> (<br>        <span class="hljs-keyword">select</span> stu_id, <span class="hljs-keyword">sum</span>(score) sums<br>        <span class="hljs-keyword">from</span> course_score<br>        <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> stu_id<br>    ) c <span class="hljs-keyword">on</span> s.id = c.stu_id<br><span class="hljs-keyword">set</span> s.total_score = c.sums<br><span class="hljs-keyword">where</span> <span class="hljs-number">1</span>=<span class="hljs-number">1</span>; <span class="hljs-comment"># 因为客户端限制一定要where所以加一个true</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>oracle(使用update…set…from)</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> s<br><span class="hljs-keyword">set</span> s.total_score = (<span class="hljs-keyword">select</span> <span class="hljs-keyword">sum</span>(score) sums<br>                    <span class="hljs-keyword">from</span> course_score<br>                    <span class="hljs-keyword">where</span> stu_id = s.id<br>                    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> stu_id)<br><span class="hljs-keyword">from</span> student s<br></code></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>修改后student表数据:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>stu_name</th>
+<th>total_score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>刘德华</td>
+<td>240.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>张学友</td>
+<td>180.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>郭富城</td>
+<td>175.00</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF-1/" class="post-title-link" itemprop="url">面试题-线程通讯-1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-08 14:48:53" itemprop="dateCreated datePublished" datetime="2019-10-08T14:48:53+08:00">2019-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:39:10" itemprop="dateModified" datetime="2020-01-19T14:39:10+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="面试题目"><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2><p><code>写两个线程,一个线程打印1~25,另一个线程打印字母A~Z,打印顺序为12A34B56C...5152Z,要求使用线程间的通信</code></p>
+<p>来源: <a href="https://mp.weixin.qq.com/s/hKWL5EzyeLcdZ8qcjZ3wzg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/hKWL5EzyeLcdZ8qcjZ3wzg</a></p>
+<p>这是一道非常好的面试题，非常能彰显被面者关于多线程的功力，一下子就勾起了我的兴趣。这里抛砖引玉，给出7种想到的解法。</p>
+<p>通用代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Helper &#123;<br>    instance;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> ExecutorService tPool = Executors.newFixedThreadPool(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String[] buildNoArr(<span class="hljs-keyword">int</span> max) &#123;<br>        String[] noArr = <span class="hljs-keyword">new</span> String[max];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; max; i++) &#123;<br>            noArr[i] = Integer.toString(i + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> noArr;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String[] buildCharArr(<span class="hljs-keyword">int</span> max) &#123;<br>        String[] charArr = <span class="hljs-keyword">new</span> String[max];<br>        <span class="hljs-keyword">int</span> tmp = <span class="hljs-number">65</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; max; i++) &#123;<br>            charArr[i] = String.valueOf((<span class="hljs-keyword">char</span>) (tmp + i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> charArr;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(String... input)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (input == <span class="hljs-keyword">null</span>)<br>            <span class="hljs-keyword">return</span>;<br>        <span class="hljs-keyword">for</span> (String each : input) &#123;<br>            System.out.print(each);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">(Runnable r)</span> </span>&#123;<br>        tPool.submit(r);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shutdown</span><span class="hljs-params">()</span> </span>&#123;<br>        tPool.shutdown();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-变量控制"><a href="#1-变量控制" class="headerlink" title="1. 变量控制"></a>1. 变量控制</h2><p>第一种解法，包含多种小的不同实现方式，但一个共同点就是靠一个共享变量来做控制。</p>
+<h3 id="1-用最基本的synchronized、notify、wait"><a href="#1-用最基本的synchronized、notify、wait" class="headerlink" title="1) 用最基本的synchronized、notify、wait"></a>1) 用最基本的<font color=red face="Cascadia Code"><code>synchronized、notify、wait</code></font></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodOne</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ThreadToGo threadToGo = <span class="hljs-keyword">new</span> ThreadToGo();<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        MethodOne one = <span class="hljs-keyword">new</span> MethodOne();<br>        Helper.instance.run(one.newThreadOne());<br>        Helper.instance.run(one.newThreadTwo());<br>        Helper.instance.shutdown();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i = i + <span class="hljs-number">2</span>) &#123;<br>                        <span class="hljs-keyword">synchronized</span> (threadToGo) &#123;<br>                            <span class="hljs-keyword">while</span> (threadToGo.value == <span class="hljs-number">2</span>)<br>                                threadToGo.wait();<br>                            Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>                            threadToGo.value = <span class="hljs-number">2</span>;<br>                            threadToGo.notify();<br>                        &#125;<br>                    &#125;<br>                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    System.out.println(<span class="hljs-string">"Oops..."</span>);<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                        <span class="hljs-keyword">synchronized</span> (threadToGo) &#123;<br>                            <span class="hljs-keyword">while</span> (threadToGo.value == <span class="hljs-number">1</span>)<br>                                threadToGo.wait();<br>                            Helper.print(arr[i]);<br>                            threadToGo.value = <span class="hljs-number">1</span>;<br>                            threadToGo.notify();<br>                        &#125;<br>                    &#125;<br>                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    System.out.println(<span class="hljs-string">"Oops..."</span>);<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadToGo</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> value = <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-利用-Lock和Condition"><a href="#2-利用-Lock和Condition" class="headerlink" title="2) 利用 Lock和Condition"></a>2) 利用 <font color=red face="Cascadia Code"><code>Lock</code>和<code>Condition</code></font></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodTwo</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ThreadToGo threadToGo = <span class="hljs-keyword">new</span> ThreadToGo();<br>    <span class="hljs-keyword">private</span> Lock lock = <span class="hljs-keyword">new</span> ReentrantLock(<span class="hljs-keyword">true</span>);<br>    <span class="hljs-keyword">private</span> Condition condition = lock.newCondition();<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        MethodTwo two = <span class="hljs-keyword">new</span> MethodTwo();<br>        Helper.instance.run(two.newThreadOne());<br>        Helper.instance.run(two.newThreadTwo());<br>        Helper.instance.shutdown();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i = i + <span class="hljs-number">2</span>) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        lock.lock();<br>                        <span class="hljs-keyword">while</span> (threadToGo.value == <span class="hljs-number">2</span>)<br>                            condition.await();<br>                        Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>                        threadToGo.value = <span class="hljs-number">2</span>;<br>                        condition.signal();<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                        e.printStackTrace();<br>                    &#125; <span class="hljs-keyword">finally</span> &#123;<br>                        lock.unlock();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        lock.lock();<br>                        <span class="hljs-keyword">while</span> (threadToGo.value == <span class="hljs-number">1</span>)<br>                            condition.await();<br>                        Helper.print(arr[i]);<br>                        threadToGo.value = <span class="hljs-number">1</span>;<br>                        condition.signal();<br>                    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>                        e.printStackTrace();<br>                    &#125; <span class="hljs-keyword">finally</span> &#123;<br>                        lock.unlock();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadToGo</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> value = <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-利用-volatile"><a href="#3-利用-volatile" class="headerlink" title="3) 利用 volatile"></a>3) 利用 <font color=red face="Cascadia Code"><code>volatile</code></font></h3><p><code>volatile</code>修饰的变量值直接存在main memory里面，子线程对该变量的读写直接写入main memory，而不是像其它变量一样在local thread里面产生一份copy。<code>volatile</code>能保证所修饰的变量对于多个线程可见性，即只要被修改，其它线程读到的一定是最新的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java">        <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodThree</span> </span>&#123;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> ThreadToGo threadToGo = <span class="hljs-keyword">new</span> ThreadToGo();<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadToGo</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> value = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br><span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>    <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i=i+<span class="hljs-number">2</span>) &#123;<br>        <span class="hljs-keyword">while</span>(threadToGo.value==<span class="hljs-number">2</span>)&#123;&#125;<br>        Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>        threadToGo.value=<span class="hljs-number">2</span>;<br>        &#125;<br>    &#125;<br>    &#125;;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br><span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>    <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">while</span>(threadToGo.value==<span class="hljs-number">1</span>)&#123;&#125;<br>        Helper.print(arr[i]);<br>        threadToGo.value=<span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    &#125;;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>    MethodThree three = <span class="hljs-keyword">new</span> MethodThree();<br>    Helper.instance.run(three.newThreadOne());<br>    Helper.instance.run(three.newThreadTwo());<br>    Helper.instance.shutdown();<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-利用-AtomicInteger"><a href="#4-利用-AtomicInteger" class="headerlink" title="4) 利用 AtomicInteger"></a>4) 利用 <font color=red face="Cascadia Code"><code>AtomicInteger</code></font></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodFive</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> AtomicInteger threadToGo = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">1</span>);<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i=i+<span class="hljs-number">2</span>) &#123;<br>                    <span class="hljs-keyword">while</span>(threadToGo.get()==<span class="hljs-number">2</span>)&#123;&#125;<br>                    Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>                    threadToGo.set(<span class="hljs-number">2</span>);<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                    <span class="hljs-keyword">while</span>(threadToGo.get()==<span class="hljs-number">1</span>)&#123;&#125;<br>                    Helper.print(arr[i]);<br>                    threadToGo.set(<span class="hljs-number">1</span>);<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        MethodFive five = <span class="hljs-keyword">new</span> MethodFive();<br>        Helper.instance.run(five.newThreadOne());<br>        Helper.instance.run(five.newThreadTwo());<br>        Helper.instance.shutdown();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-CyclicBarrierAPI"><a href="#2-CyclicBarrierAPI" class="headerlink" title="2. CyclicBarrierAPI"></a>2. <code>CyclicBarrierAPI</code></h2><p><code>CyclicBarrier</code>可以实现让一组线程在全部到达<code>Barrier</code>时(执行<code>await()</code>)，再一起同时执行，并且所有线程释放后，还能复用它,即为<code>Cyclic</code>。</p>
+<p><code>CyclicBarrier</code>类提供两个构造器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CyclicBarrier</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CyclicBarrier</span><span class="hljs-params">(<span class="hljs-keyword">int</span> parties, Runnable barrierAction)</span> </span>&#123;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CyclicBarrier</span><span class="hljs-params">(<span class="hljs-keyword">int</span> parties)</span> </span>&#123;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodFour</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> CyclicBarrier barrier;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> List&lt;String&gt; list;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MethodFour</span><span class="hljs-params">()</span> </span>&#123;<br>        list = Collections.synchronizedList(<span class="hljs-keyword">new</span> ArrayList&lt;String&gt;());<br>        barrier = <span class="hljs-keyword">new</span> CyclicBarrier(<span class="hljs-number">2</span>,newBarrierAction());<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j=<span class="hljs-number">0</span>; i &lt; arr.length; i=i+<span class="hljs-number">2</span>,j++) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        list.add(arr[i]);<br>                        list.add(arr[i+<span class="hljs-number">1</span>]);<br>                        barrier.await();<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException | BrokenBarrierException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        list.add(arr[i]);<br>                        barrier.await();<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException | BrokenBarrierException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> Runnable <span class="hljs-title">newBarrierAction</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                Collections.sort(list);<br>                list.forEach(c-&gt;System.out.print(c));<br>                list.clear();<br>            &#125;<br>        &#125;;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;<br>        MethodFour four = <span class="hljs-keyword">new</span> MethodFour();<br>        Helper.instance.run(four.newThreadOne());<br>        Helper.instance.run(four.newThreadTwo());<br>        Helper.instance.shutdown();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里多说一点，这个API其实还是利用<code>lock</code>和<code>condition</code>，无非是多个线程去争抢<code>CyclicBarrier</code>的<code>instance的lock</code>罢了，最终<code>barrierAction</code>执行时，是在抢到<code>CyclicBarrierinstance</code>的那个线程上执行的。</p>
+<h2 id="3-PipedInputStreamAPI"><a href="#3-PipedInputStreamAPI" class="headerlink" title="3. PipedInputStreamAPI"></a>3. <code>PipedInputStreamAPI</code></h2><p>这里用流在两个线程间通信，但是Java中的Stream是单向的，所以在两个线程中分别建了一个input和output。这显然是一种很搓的方式，不过也算是一种通信方式吧，执行的时候那种速度简直。。。。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodSix</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> PipedInputStream inputStream1;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> PipedOutputStream outputStream1;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> PipedInputStream inputStream2;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> PipedOutputStream outputStream2;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">byte</span>[] MSG;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MethodSix</span><span class="hljs-params">()</span> </span>&#123;<br>        inputStream1 = <span class="hljs-keyword">new</span> PipedInputStream();<br>        outputStream1 = <span class="hljs-keyword">new</span> PipedOutputStream();<br>        inputStream2 = <span class="hljs-keyword">new</span> PipedInputStream();<br>        outputStream2 = <span class="hljs-keyword">new</span> PipedOutputStream();<br>        MSG = <span class="hljs-string">"Go"</span>.getBytes();<br>        <span class="hljs-keyword">try</span> &#123;<br>            inputStream1.connect(outputStream2);<br>            inputStream2.connect(outputStream1);<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shutdown</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        inputStream1.close();<br>        inputStream2.close();<br>        outputStream1.close();<br>        outputStream2.close();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-keyword">private</span> PipedInputStream in = inputStream1;<br>            <span class="hljs-keyword">private</span> PipedOutputStream out = outputStream1;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i = i + <span class="hljs-number">2</span>) &#123;<br>                    Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        out.write(MSG);<br>                        <span class="hljs-keyword">byte</span>[] inArr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">2</span>];<br>                        in.read(inArr);<br>                        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;<br>                            <span class="hljs-keyword">if</span> (<span class="hljs-string">"Go"</span>.equals(<span class="hljs-keyword">new</span> String(inArr)))<br>                                <span class="hljs-keyword">break</span>;<br>                        &#125;<br>                    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-keyword">private</span> PipedInputStream in = inputStream2;<br>            <span class="hljs-keyword">private</span> PipedOutputStream out = outputStream2;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        <span class="hljs-keyword">byte</span>[] inArr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">2</span>];<br>                        in.read(inArr);<br>                        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;<br>                            <span class="hljs-keyword">if</span> (<span class="hljs-string">"Go"</span>.equals(<span class="hljs-keyword">new</span> String(inArr)))<br>                                <span class="hljs-keyword">break</span>;<br>                        &#125;<br>                        Helper.print(arr[i]);<br>                        out.write(MSG);<br>                    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        MethodSix six = <span class="hljs-keyword">new</span> MethodSix();<br>        Helper.instance.run(six.newThreadOne());<br>        Helper.instance.run(six.newThreadTwo());<br>        Helper.instance.shutdown();<br>        six.shutdown();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-BlockingQueue"><a href="#4-BlockingQueue" class="headerlink" title="4. BlockingQueue"></a>4. <code>BlockingQueue</code></h2><h3 id="顺便总结下BlockingQueue的一些内容"><a href="#顺便总结下BlockingQueue的一些内容" class="headerlink" title="顺便总结下BlockingQueue的一些内容"></a>顺便总结下<code>BlockingQueue</code>的一些内容</h3><p><font color=red face="Cascadia Code">BlockingQueue</font>定义的常用方法如下:</p>
+<ul>
+<li><code>add(Object)</code>：把<code>Object</code>加到<code>BlockingQueue</code>里，如果<code>BlockingQueue</code>可以容纳，则返回<code>true</code>，否则抛出异常。</li>
+<li><code>offer(Object)</code>：表示如果可能的话，将<code>Object</code>加到<code>BlockingQueue</code>里，即如果<code>BlockingQueue</code>可以容纳，则返回<code>true</code>，否则返回<code>false</code>。</li>
+<li><code>put(Object)</code>：把<code>Object</code>加到<code>BlockingQueue</code>里，如果<code>BlockingQueue</code>没有空间，则调用此方法的线程被阻断直到<code>BlockingQueue</code>里有空间再继续。</li>
+<li><code>poll(time)</code>：获取并删除<code>BlockingQueue</code>里排在首位的对象，若不能立即取出，则可以等<code>time</code>参数规定的时间，取不到时返回<code>null</code>。当不传入<code>time</code>值时，立刻返回。</li>
+<li><code>peek()</code>：立刻获取<code>BlockingQueue</code>里排在首位的对象，但不从队列里删除，如果队列为空，则返回<code>null</code>。</li>
+<li><code>take()</code>：获取并删除<code>BlockingQueue</code>里排在首位的对象，若<code>BlockingQueue</code>为空，阻断进入等待状态直到<code>BlockingQueue</code>有新的对象被加入为止。</li>
+</ul>
+<p><font color=red face="Cascadia Code">BlockingQueue</font>有四个具体的实现类：</p>
+<ul>
+<li><code>ArrayBlockingQueue</code>：规定大小的<code>BlockingQueue</code>，其构造函数必须带一个<code>int</code>参数来指明其大小。其所含的对象是以<code>FIFO</code>（先入先出）顺序排序的。</li>
+<li><code>LinkedBlockingQueue</code>：大小不定的<code>BlockingQueue</code>，若其构造函数带一个规定大小的参数，生成的<code>BlockingQueue</code>有大小限制，若不带大小参数，所生成的<code>BlockingQueue</code>的大小由<code>Integer.MAX_VALUE</code>来决定。其所含的对象是以<code>FIFO</code>顺序排序的。</li>
+<li><code>PriorityBlockingQueue</code>：类似于<code>LinkedBlockingQueue</code>,但其所含对象的排序不是<code>FIFO</code>，而是依据对象的自然排序顺序或者是构造函数所带的<code>Comparator</code>决定的顺序。</li>
+<li><code>SynchronousQueue</code>：特殊的<code>BlockingQueue</code>，对其的操作必须是放和取交替完成的。</li>
+</ul>
+<h3 id="这里用了两种玩法"><a href="#这里用了两种玩法" class="headerlink" title="这里用了两种玩法"></a>这里用了两种玩法</h3><p>1) 共享一个<code>queue</code>，根据<code>peek</code>和<code>poll</code>的不同来实现<br>2)两个<code>queue</code>，利用<code>take()</code>会自动阻塞来实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodSeven</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> LinkedBlockingQueue&lt;String&gt; queue = <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;&gt;();<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadOne</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i = i + <span class="hljs-number">2</span>) &#123;<br>                    Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>                    queue.offer(<span class="hljs-string">"TwoToGo"</span>);<br>                    <span class="hljs-keyword">while</span> (!<span class="hljs-string">"OneToGo"</span>.equals(queue.peek())) &#123;<br>                    &#125;<br>                    queue.poll();<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadTwo</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                    <span class="hljs-keyword">while</span> (!<span class="hljs-string">"TwoToGo"</span>.equals(queue.peek())) &#123;<br>                    &#125;<br>                    queue.poll();<br>                    Helper.print(arr[i]);<br>                    queue.offer(<span class="hljs-string">"OneToGo"</span>);<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> LinkedBlockingQueue&lt;String&gt; queue1 = <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;&gt;();<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> LinkedBlockingQueue&lt;String&gt; queue2 = <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;&gt;();<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadThree</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildNoArr(<span class="hljs-number">52</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i = i + <span class="hljs-number">2</span>) &#123;<br>                    Helper.print(arr[i], arr[i + <span class="hljs-number">1</span>]);<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        queue2.put(<span class="hljs-string">"TwoToGo"</span>);<br>                        queue1.take();<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Runnable <span class="hljs-title">newThreadFour</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> String[] inputArr = Helper.buildCharArr(<span class="hljs-number">26</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-keyword">private</span> String[] arr = inputArr;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        queue2.take();<br>                        Helper.print(arr[i]);<br>                        queue1.put(<span class="hljs-string">"OneToGo"</span>);<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        MethodSeven seven = <span class="hljs-keyword">new</span> MethodSeven();<br>        Helper.instance.run(seven.newThreadOne());<br>        Helper.instance.run(seven.newThreadTwo());<br>        Thread.sleep(<span class="hljs-number">2000</span>);<br>        System.out.println(<span class="hljs-string">""</span>);<br>        Helper.instance.run(seven.newThreadThree());<br>        Helper.instance.run(seven.newThreadFour());<br>        Helper.instance.shutdown();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Raven"
+      src="/images/my-avatar.gif">
+  <p class="site-author-name" itemprop="name">Raven</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/winskin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;winskin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Raven</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
