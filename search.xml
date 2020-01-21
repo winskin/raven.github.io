@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>面试题-求非负数平方根</title>
+    <url>/2020/01/21/2020-01-21-%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%B1%82%E9%9D%9E%E8%B4%9F%E6%95%B0%E5%B9%B3%E6%96%B9%E6%A0%B9/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>实现 int sqrt(int x) 函数。</p>
+<p>计算并返回 x 的平方根，其中 x 是非负整数。</p>
+<p>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/sqrtx" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sqrtx</a></p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><ol>
+<li>定义左边界0，右边界x；取左右边界的中位数。</li>
+<li>计算中位数的平方，判断与x之间的大小；小于x则收缩左边界，大于x则收缩右边界，如此循环</li>
+<li>等右边界贴近左边界（甚至&lt;）时，左边界则是最优解</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs text">PS：取出中位数时一定要+1<br><br>    否则会存在这种情况，进退两难进入死循环 如：<br>    中位数：46339 left:46339 right:46340<br><br>    而+1之后 如：<br>    中位数：46339 left:46337 right:46340<br>    中位数：46340 left:46339 right:46340<br><br>    此时left：46339就是最优解<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">long</span> <span class="hljs-title">mySqrt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-comment">// 要把搜索的范围设置成长整型, 测试用例 2147395599 会超出int的最大长度</span><br><br>    <span class="hljs-comment">// 比较特殊的是 0 和 1，因此左边界设置0，有边界设置 x/2 + 1（一个非负数n，它的平方根不会大于（n/2+1））</span><br><br>    <span class="hljs-keyword">long</span> left = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">long</span> right = x / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 将在左右区间内寻找</span><br>    <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>        <span class="hljs-comment">// 计算左右边界的中位数</span><br>        <span class="hljs-keyword">long</span> mid = (left + right + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>        System.out.println(<span class="hljs-string">"中位数："</span> + mid + <span class="hljs-string">" （left:"</span> + left + <span class="hljs-string">" right:"</span> + right + <span class="hljs-string">"）"</span>);<br>        <span class="hljs-comment">// 中位数平方，判断是否接近</span><br>        <span class="hljs-keyword">long</span> square = mid * mid;<br>        <span class="hljs-keyword">if</span> (square &gt; x) &#123;<br>            <span class="hljs-comment">// 结果&gt;x，右边界收缩到中位数，但是中位数明显不是， -1 ，准备下次循环重新计算</span><br>            right = mid - <span class="hljs-number">1</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 结果&lt;=x，左边界等于 中位数</span><br>            left = mid;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 此时左边界已经&lt;=x，且右边界贴近（甚至&lt;）左边界极限，说明左边界已经是最近似值</span><br>    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) left;<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试题</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>寻找适合自己的记账法</title>
     <url>/2020/01/20/2020-01-20-%E5%AF%BB%E6%89%BE%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%B3%95/</url>
     <content><![CDATA[<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p>使用手机软件记账，且只记录支出流水，原因如下：</p>
