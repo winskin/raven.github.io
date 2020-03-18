@@ -541,8 +541,8 @@
         <category>bug</category>
       </categories>
       <tags>
-        <tag>bug</tag>
         <tag>Python</tag>
+        <tag>bug</tag>
       </tags>
   </entry>
   <entry>
@@ -554,7 +554,7 @@
 <li>自增ID：对于数据敏感场景不宜使用，且不适合于分布式场景。</li>
 <li>GUID：采用无意义字符串，数据量增大时造成访问过慢，且不宜排序。</li>
 </ol>
-<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="/assets%5Cimages%5Cblog-images%5CSnowFlakeId.png" alt="Image text"></p>
+<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="/assets/images/blog-images/SnowFlakeId.png" alt="Image text"></p>
 <ul>
 <li>1位标识，由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，所以id一般是正数，最高位是0</li>
 <li>41位时间截(毫秒级)，注意，41位时间截不是存储当前时间的时间截，而是存储时间截的差值（当前时间截 - 开始时间截)，</li>
@@ -903,7 +903,7 @@
   <entry>
     <title>Git Flow</title>
     <url>/2019/05/05/2019-05-05-git%20flow/</url>
-    <content><![CDATA[<h1 id="Git-Flow"><a href="#Git-Flow" class="headerlink" title="Git Flow"></a>Git Flow</h1><h2 id="分支图"><a href="#分支图" class="headerlink" title="分支图"></a>分支图</h2><p><img src="/assets%5Cimages%5Cblog-images%5Cgit-workflow-release-cycle-4maintenance.png" alt="Image text"></p>
+    <content><![CDATA[<h1 id="Git-Flow"><a href="#Git-Flow" class="headerlink" title="Git Flow"></a>Git Flow</h1><h2 id="分支图"><a href="#分支图" class="headerlink" title="分支图"></a>分支图</h2><p><img src="/assets/images/blog-images/git-workflow-release-cycle-4maintenance.png" alt="Image text"></p>
 <h2 id="分支说明"><a href="#分支说明" class="headerlink" title="分支说明"></a>分支说明</h2><table>
 <thead>
 <tr>
