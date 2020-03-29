@@ -197,6 +197,137 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">面试题-sql批量更新</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-08 16:46:43" itemprop="dateCreated datePublished" datetime="2019-10-08T16:46:43+08:00">2019-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-19 14:39:06" itemprop="dateModified" datetime="2020-01-19T14:39:06+08:00">2020-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" class="post-meta-item leancloud_visitors" data-flag-title="面试题-sql批量更新" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="面试题目"><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2><p><code>根据成绩表的数据统计以后更新学生表的total_score字段(即根据学生选修课程的成绩更新的总分)</code></p>
+<h2 id="表结构和数据语句"><a href="#表结构和数据语句" class="headerlink" title="表结构和数据语句"></a>表结构和数据语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student<br>(<br>    <span class="hljs-keyword">id</span> <span class="hljs-built_in">bigint</span> auto_increment,<br>    stu_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'学生姓名'</span>,<br>    total_score <span class="hljs-built_in">decimal</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'总分'</span>,<br>    <span class="hljs-keyword">constraint</span> student_pk<br>        primary <span class="hljs-keyword">key</span> (<span class="hljs-keyword">id</span>)<br>)<br><span class="hljs-keyword">comment</span> <span class="hljs-string">'学生表'</span>;<br><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> course_score<br>(<br>    stu_id <span class="hljs-built_in">bigint</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'学生id'</span>,<br>    course_id <span class="hljs-built_in">bigint</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'课程id'</span>,<br>    score <span class="hljs-built_in">decimal</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0.00</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'课程分数'</span><br>)<br><span class="hljs-keyword">comment</span> <span class="hljs-string">'选修课程成绩表'</span>;<br><br><br><span class="hljs-comment"># 新增学生数据</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'刘德华'</span>, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">2</span>, <span class="hljs-string">'张学友'</span>, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">3</span>, <span class="hljs-string">'郭富城'</span>, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment"># 新增课程分数数据</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">95</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">85</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">75</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="更新sql"><a href="#更新sql" class="headerlink" title="更新sql"></a>更新sql</h2><ol>
+<li><p>mysql</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span><br>    student s <span class="hljs-keyword">join</span> (<br>        <span class="hljs-keyword">select</span> stu_id, <span class="hljs-keyword">sum</span>(score) sums<br>        <span class="hljs-keyword">from</span> course_score<br>        <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> stu_id<br>    ) c <span class="hljs-keyword">on</span> s.id = c.stu_id<br><span class="hljs-keyword">set</span> s.total_score = c.sums<br><span class="hljs-keyword">where</span> <span class="hljs-number">1</span>=<span class="hljs-number">1</span>; <span class="hljs-comment"># 因为客户端限制一定要where所以加一个true</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>oracle(使用update…set…from)</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> s<br><span class="hljs-keyword">set</span> s.total_score = (<span class="hljs-keyword">select</span> <span class="hljs-keyword">sum</span>(score) sums<br>                    <span class="hljs-keyword">from</span> course_score<br>                    <span class="hljs-keyword">where</span> stu_id = s.id<br>                    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> stu_id)<br><span class="hljs-keyword">from</span> student s<br></code></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>修改后student表数据:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>stu_name</th>
+<th>total_score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>刘德华</td>
+<td>240.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>张学友</td>
+<td>180.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>郭富城</td>
+<td>175.00</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1474,125 +1605,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/09/2018-06-09-maven%E7%88%B6%E5%AD%90%E6%A8%A1%E5%9D%97jar%E5%8C%85%E7%AE%A1%E7%90%86%E5%92%8Cspring%20boot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-      <meta itemprop="name" content="Raven">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="f0.95">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/06/09/2018-06-09-maven%E7%88%B6%E5%AD%90%E6%A8%A1%E5%9D%97jar%E5%8C%85%E7%AE%A1%E7%90%86%E5%92%8Cspring%20boot/" class="post-title-link" itemprop="url">maven父子模块jar包管理和spring boot</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-06-09 11:48:00" itemprop="dateCreated datePublished" datetime="2018-06-09T11:48:00+08:00">2018-06-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-19 14:39:48" itemprop="dateModified" datetime="2020-01-19T14:39:48+08:00">2020-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/06/09/2018-06-09-maven%E7%88%B6%E5%AD%90%E6%A8%A1%E5%9D%97jar%E5%8C%85%E7%AE%A1%E7%90%86%E5%92%8Cspring%20boot/" class="post-meta-item leancloud_visitors" data-flag-title="maven父子模块jar包管理和spring boot" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/06/09/2018-06-09-maven%E7%88%B6%E5%AD%90%E6%A8%A1%E5%9D%97jar%E5%8C%85%E7%AE%A1%E7%90%86%E5%92%8Cspring%20boot/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/06/09/2018-06-09-maven%E7%88%B6%E5%AD%90%E6%A8%A1%E5%9D%97jar%E5%8C%85%E7%AE%A1%E7%90%86%E5%92%8Cspring%20boot/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">parent--父模块空maven项目, 用于管理子模块<br>    controller<br>    service<br>    dao<br>    model<br>    client--被其他项目依赖进行微服务内部调用(因下面问题导致client在其他项目中版本冲突和引入大量无用的jar包)<br></code></pre></td></tr></table></figure>
-
-<h1 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h1><ol>
-<li>父模块继承spring boot和引入大量jar包, 当项目1引入项目2中的client模块时导致项目2中父模块中很多无用的jar包也引入到项目1中</li>
-<li>开始计划是父模块放公用的包和管理子模块的版本, 最后每个人的习惯不一样导致不同项目之间的版本冲突</li>
-<li>spring boot继承在maven父子模块中很容易版本冲突</li>
-</ol>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ol>
-<li>哪个模块用到什么引入什么, 保持子模块独立</li>
-<li>父模块只放&lt;properties&gt;标签管理版本, 不引入任何jar包</li>
-<li>父模块不继承spring boot, 由controller层导入spring boot</li>
-</ol>
-<h1 id="由父模块继承spring-boot改为子模块导入spring-boot"><a href="#由父模块继承spring-boot改为子模块导入spring-boot" class="headerlink" title="由父模块继承spring boot改为子模块导入spring boot"></a>由父模块继承spring boot改为子模块导入spring boot</h1><ol>
-<li><p>❌父模块不要这样使用继承</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.5.13.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span> <span class="hljs-comment">&lt;!-- lookup parent from repository --&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>✔建议这样使用</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 使用dependencyManagement导入版本号 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependencyManagement</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- <br>            自定义版本覆盖spring boot内的版本;<br>            比如验证框架6.0.10.Final覆盖spring boot parent内的5.3.6.Final;<br>            项目会优先获取spring boot内版本, 覆盖可以避免版本冲突<br>            注意: 覆盖版本一定要在spring-boot-dependencies上面<br>        --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.hibernate<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hibernate-validator<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>6.0.10.Final<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-comment">&lt;!-- 导入spring boot的pom --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.5.13.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencyManagement</span>&gt;</span><br><br>.....<br><br><span class="hljs-comment">&lt;!-- 使用导入, 一定要使用spring-boot-maven插件, 否则无法使用java -jar 命令 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.5.13.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">mainClass</span>&gt;</span>$&#123;start-class&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">mainClass</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">layout</span>&gt;</span>ZIP<span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--&lt;skip&gt;true&lt;/skip&gt;--&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>repackage<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1660,7 +1677,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1673,7 +1690,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

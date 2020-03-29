@@ -197,6 +197,165 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/2020-03-29-JWT%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+      <meta itemprop="name" content="Raven">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f0.95">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/29/2020-03-29-JWT%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">JWT简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-29 16:15:49 / 修改时间：16:15:55" itemprop="dateCreated datePublished" datetime="2020-03-29T16:15:49+08:00">2020-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/03/29/2020-03-29-JWT%E7%AE%80%E4%BB%8B/" class="post-meta-item leancloud_visitors" data-flag-title="JWT简介" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/29/2020-03-29-JWT%E7%AE%80%E4%BB%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/29/2020-03-29-JWT%E7%AE%80%E4%BB%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="JSON-Web-Token-JWT"><a href="#JSON-Web-Token-JWT" class="headerlink" title="JSON Web Token (JWT)"></a>JSON Web Token (JWT)</h2><p>参考资料：<a href="https://jwt.io/introduction/" target="_blank" rel="noopener">Introduction to JSON Web Tokens</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>JSON Web令牌（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方法，用于在各方之间安全地将信息作为JSON对象传输。由于此信息是经过数字签名的，因此可以被验证和信任。</p>
+<h2 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h2><p>JSON Web Token由三个部分组成，使用(.)分割。</p>
+<ul>
+<li>Header</li>
+<li>Payload</li>
+<li>Signature</li>
+</ul>
+<p>因此JWT的格式为：<code>xxxx.yyyy.zzzz</code></p>
+<h3 id="第一部分Header"><a href="#第一部分Header" class="headerlink" title="第一部分Header"></a>第一部分Header</h3><p>通常包括两部分：令牌的类型(即JWT)，以及使用的哈希算法(如HMAC SHA256或RSA)。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">"alg"</span>: <span class="hljs-string">"HS256"</span>,<br>  <span class="hljs-attr">"typ"</span>: <span class="hljs-string">"JWT"</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后，这个JSON是Base64Url编码形成JWT的第一部分。</p>
+<h3 id="第二部分Payload"><a href="#第二部分Payload" class="headerlink" title="第二部分Payload"></a>第二部分Payload</h3><p>通常包括claims, claims是关于实体（通常是用户）和附加元数据的声明。</p>
+<p>这里有三个类型的声明：</p>
+<ul>
+<li>reserved</li>
+<li>public</li>
+<li>private</li>
+</ul>
+<h4 id="Reserved-claims"><a href="#Reserved-claims" class="headerlink" title="Reserved claims"></a>Reserved claims</h4><p>这些是一组预定义的声明，不是强制性的，而是建议的，以提供一组有用的，可互操作的声明。其中有些是：</p>
+<ul>
+<li><strong>iss</strong> (issuer)</li>
+<li><strong>exp</strong> (expiration time)</li>
+<li><strong>sub</strong> (subject)</li>
+<li><strong>aud</strong> (audience)</li>
+<li><a href="https://tools.ietf.org/html/rfc7519#section-4.1" target="_blank" rel="noopener">其他</a></li>
+</ul>
+<p><strong>PS</strong>：<code>请注意，声明名称只有三个字符，因为JWT意味着紧凑。</code></p>
+<h4 id="Public-claims"><a href="#Public-claims" class="headerlink" title="Public claims"></a>Public claims</h4><p>这些可以由使用JWT的人随意定义。但为避免冲突，应在<br><a href='https://www.iana.org/assignments/jwt/jwt.xhtml' target="_blank" rel="noopener">IANA JSON Web Token注册表</a><br>中定义它们，或者将其定义为包含防冲突命名空间的URI。</p>
+<h4 id="Private-claims"><a href="#Private-claims" class="headerlink" title="Private claims"></a>Private claims</h4><p>这些是为共享使用它们的各方之间共享信息而创建的自定义声明。</p>
+<h4 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>	<span class="hljs-attr">"sub"</span>: <span class="hljs-string">"1234567890"</span>, <br>	<span class="hljs-attr">"name"</span>: <span class="hljs-string">"John Doe"</span>, <br>	<span class="hljs-attr">"admin"</span>: <span class="hljs-literal">true</span> <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>该payload被Base64Url编码以形成JSON Web令牌的第二部分。</p>
+<h3 id="第三部分Signature"><a href="#第三部分Signature" class="headerlink" title="第三部分Signature"></a>第三部分Signature</h3><p>创建签名部分，必须使用以下3个数据根据header中指定的算法, 并签名用于验签。</p>
+<ul>
+<li>base64编码的header</li>
+<li>编码的payload</li>
+<li>一个secret</li>
+</ul>
+<p>例如：如果要使用HMAC SHA256算法，将以以下方式创建签名：</p>
+<p><code>HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload), secret)</code></p>
+<h3 id="最后拼接起来"><a href="#最后拼接起来" class="headerlink" title="最后拼接起来"></a>最后拼接起来</h3><p>输出是三个由点(.)分隔的Base64-URL字符串，可以在HTML和HTTP环境中轻松传递这些字符串，与基于XML的标准（例如SAML）相比，它更紧凑。</p>
+<p>下面这个就是编码签名后的JWT结果字符串：</p>
+<p><font color=red face="Cascadia Code">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</font>.<br><font color=purple face="Cascadia Code">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</font>.<br><font color=cyan face="Cascadia Code">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</font>.</p>
+<p>可以使用<a href='https://jwt.io/#debugger-io' target="_blank" rel="noopener">JWT Debug 工具<a/>测试签名和验签名。</p>
+<h2 id="如何使用JWT"><a href="#如何使用JWT" class="headerlink" title="如何使用JWT"></a>如何使用JWT</h2><p>获取JWT并将其用于访问API或资源：</p>
+<ul>
+<li>客户端从授权服务器登录</li>
+<li>登录成功后授权服务器下发JWT令牌返回给客户端</li>
+<li>客户端使用JWT令牌访问受保护的API资源服务器</li>
+</ul>
+<p>请注意，使用签名的令牌，令牌中包含的所有信息都会暴露给用户或其他方（因使用的是Base64可以反编译获得原文），即使他们无法更改其中的数据，但不应将机密信息放入令牌中，由于缺乏安全性，不应该将敏感的会话数据存储在浏览器中。</p>
+<p>在身份验证中，当用户使用其凭据成功登录时，将返回JSON Web Token。由于令牌是凭据，因此必须格外小心以防止安全问题。通常，令牌的保留时间不应超过要求的时间。</p>
+<p>每当用户想要访问受保护的路由或资源时，用户代理应发送JWT，通常在使用Bearer模式的Authorization header中。<br>header的内容应如下所示： <code>Authorization: Bearer &lt;token&gt;</code></p>
+<p>在某些情况下，这可以是无状态授权机制。服务器的受保护路由将在header中检查有效的JWT，如果存在，则将允许用户访问受保护的资源。如果JWT包含必要的数据，则可以减少查询数据库中某些操作的需求，尽管并非总是如此。</p>
+<p>如果令牌是在header中发送的，则跨域资源共享（CORS）不会成为问题，因为它不使用cookie。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>JSON Web Token（简称JWT）使用点（.）分隔三个Base64加密部分拼接在一起的字符串。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>轻量跨语言，使用字符串传输，不同开发语言系统都能使用</li>
+<li>无状态，无需消耗缓存或其他数据存储保存状态</li>
+<li>可跨域</li>
+<li>可承载数据传输到不同系统，减少数据库的访问</li>
+<li>可设置有效时间，在网关层/入口拦截器处理判断</li>
+<li>签名和承载数据不可更改</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>承载数据完全暴露</li>
+<li>无状态，不能有效管理token，需要等有效时间失效</li>
+<li>有效时间续期问题</li>
+</ol>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>现在开发的系统是生成一个token（如UUID字符串），保存在缓存中，由服务器管理，校验和存储需要一些资源，当大量请求的时候后端会有一些压力。</p>
+<p>因此参考了JWT的特性，把token字符串改为JWT的形式，token放在缓存，token状态因业务问题还是需要保留。这样的好处是保持业务不变，利用JWT的承载数据校验有效时间和身份等判断，减少与缓存的交互压力，可以很大程度有效过滤掉无用的token请求（虽然没了JWT的无状态等特性）。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/21/2020-01-21-%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%B1%82%E9%9D%9E%E8%B4%9F%E6%95%B0%E5%B9%B3%E6%96%B9%E6%A0%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1496,142 +1655,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-      <meta itemprop="name" content="Raven">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="f0.95">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">面试题-sql批量更新</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-08 16:46:43" itemprop="dateCreated datePublished" datetime="2019-10-08T16:46:43+08:00">2019-10-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-19 14:39:06" itemprop="dateModified" datetime="2020-01-19T14:39:06+08:00">2020-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" class="post-meta-item leancloud_visitors" data-flag-title="面试题-sql批量更新" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/08/2019-10-08-%E9%9D%A2%E8%AF%95%E9%A2%98-sql%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="面试题目"><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2><p><code>根据成绩表的数据统计以后更新学生表的total_score字段(即根据学生选修课程的成绩更新的总分)</code></p>
-<h2 id="表结构和数据语句"><a href="#表结构和数据语句" class="headerlink" title="表结构和数据语句"></a>表结构和数据语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student<br>(<br>    <span class="hljs-keyword">id</span> <span class="hljs-built_in">bigint</span> auto_increment,<br>    stu_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'学生姓名'</span>,<br>    total_score <span class="hljs-built_in">decimal</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'总分'</span>,<br>    <span class="hljs-keyword">constraint</span> student_pk<br>        primary <span class="hljs-keyword">key</span> (<span class="hljs-keyword">id</span>)<br>)<br><span class="hljs-keyword">comment</span> <span class="hljs-string">'学生表'</span>;<br><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> course_score<br>(<br>    stu_id <span class="hljs-built_in">bigint</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'学生id'</span>,<br>    course_id <span class="hljs-built_in">bigint</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'课程id'</span>,<br>    score <span class="hljs-built_in">decimal</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0.00</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">'课程分数'</span><br>)<br><span class="hljs-keyword">comment</span> <span class="hljs-string">'选修课程成绩表'</span>;<br><br><br><span class="hljs-comment"># 新增学生数据</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'刘德华'</span>, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">2</span>, <span class="hljs-string">'张学友'</span>, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> student(<span class="hljs-keyword">id</span>, stu_name, total_score) <span class="hljs-keyword">value</span> (<span class="hljs-number">3</span>, <span class="hljs-string">'郭富城'</span>, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment"># 新增课程分数数据</span><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">80</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">95</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">85</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> course_score(stu_id, course_id, score) <span class="hljs-keyword">VALUE</span> (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">75</span>);<br></code></pre></td></tr></table></figure>
-
-<h2 id="更新sql"><a href="#更新sql" class="headerlink" title="更新sql"></a>更新sql</h2><ol>
-<li><p>mysql</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span><br>    student s <span class="hljs-keyword">join</span> (<br>        <span class="hljs-keyword">select</span> stu_id, <span class="hljs-keyword">sum</span>(score) sums<br>        <span class="hljs-keyword">from</span> course_score<br>        <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> stu_id<br>    ) c <span class="hljs-keyword">on</span> s.id = c.stu_id<br><span class="hljs-keyword">set</span> s.total_score = c.sums<br><span class="hljs-keyword">where</span> <span class="hljs-number">1</span>=<span class="hljs-number">1</span>; <span class="hljs-comment"># 因为客户端限制一定要where所以加一个true</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>oracle(使用update…set…from)</p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> s<br><span class="hljs-keyword">set</span> s.total_score = (<span class="hljs-keyword">select</span> <span class="hljs-keyword">sum</span>(score) sums<br>                    <span class="hljs-keyword">from</span> course_score<br>                    <span class="hljs-keyword">where</span> stu_id = s.id<br>                    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> stu_id)<br><span class="hljs-keyword">from</span> student s<br></code></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>修改后student表数据:</p>
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>stu_name</th>
-<th>total_score</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>刘德华</td>
-<td>240.00</td>
-</tr>
-<tr>
-<td>2</td>
-<td>张学友</td>
-<td>180.00</td>
-</tr>
-<tr>
-<td>3</td>
-<td>郭富城</td>
-<td>175.00</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1699,7 +1727,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1712,7 +1740,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
